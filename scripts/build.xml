@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="svn-test" basedir="." default="createZips">
+
+<property name="svn.repository.url" value="${svn.repository.url}"/>
+<property name="svn.project.base.path" value="${svn.project.base.path}" />
+<property name="svn.base.url" value="${svn.repository.url}/${svn.project.base.path}"/>
+<property name="svnant.lib.dir" location="svn-ant-lib"/>
+<property name="svnant.javahl" value="false" />
+<property file="build.properties" />
+
+<path id="project.classpath">
+ <fileset dir="lib">
+    <include name="**/*.jar"/>
+ </fileset>
+</path>
+
+
+<taskdef name="svn" classname="org.tigris.subversion.svnant.SvnTask" classpathref="project.classpath"/>
+
+<target name="createZips">
+
+<!-- Settings for svn; place things like usernames and links to ssh key files here -->
+<!-- Sigh. The svnSetting task is not defined. Using attributes on the svn task works
+     but shows a warning error. Fix this later. -->
+     <!--
+<svnSetting 
+    javahl="false"
+    id="svn.settings"/>
+    -->
+
+<!-- svnkit is the pure java svn implementation rather than the command line implementation of java-->
+
+    <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/languages/java/trunk" revision="HEAD" destPath="open-dis-languages/java" />
+  </svn>
+  
+  <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/languages/cpp/trunk" revision="HEAD" destPath="open-dis-languages/cpp" />
+  </svn>
+  
+  <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/languages/csharp/trunk" revision="HEAD" destPath="open-dis-languages/csharp" />
+  </svn>
+  
+  <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/languages/objective-c/trunk" revision="HEAD" destPath="open-dis-languages/objective-c" />
+  </svn>
+  
+  <zip basedir="." excludes="build.xml,release.sh,*.zip,lib/**, lib,DisWebSockets,XplaneDisPlugin" destfile="open-dis-languages.zip" />
+  
+  <delete dir="open-dis-languages"/>
+  
+  <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/applications/DisWebSockets" revision="HEAD" destPath="DisWebSockets" />
+  </svn>
+  
+  <zip basedir="DisWebSockets" destfile="DisWebSockets.zip" />
+  
+  <delete dir="DisWebSockets"/>
+  
+   <svn  svnkit="true" javahl="false">
+     <export srcUrl="https://open-dis.svn.sourceforge.net/svnroot/open-dis/applications/DisPlugin" revision="HEAD" destPath="XplaneDisPlugin" />
+  </svn>
+  
+  <zip basedir="XplaneDisPlugin" destfile="XplaneDisPlugin.zip" />
+  
+  <delete dir="XplaneDisPlugin"/>  
+
+</target>
+
+<!-- This target is typically run by the Jenkins continuous integration server. -->
+<!-- It uploads the build to the file release system on sourceforge using public -->
+<!-- key authentication. -->
+
+<target name="jenkinsUploadToSourceforge" depends="createZips">
+    
+   <scp localFile="open-dis-languages.zip" 
+         todir="mcgredo,open-dis@frs.sourceforge.net:/home/frs/project/open-dis/open-dis"
+         trust="true"
+         keyfile="/var/lib/jenkins/open-dis-sourceforge-keys/id_rsa"/>
+   
+   <scp localFile="XplaneDisPlugin.zip" 
+         todir="mcgredo,open-dis@frs.sourceforge.net:/home/frs/project/open-dis/open-dis"
+         trust="true"
+         keyfile="/var/lib/jenkins/open-dis-sourceforge-keys/id_rsa"/>
+   
+   <scp localFile="DisWebSockets.zip" 
+         todir="mcgredo,open-dis@frs.sourceforge.net:/home/frs/project/open-dis/open-dis"
+         trust="true"
+         keyfile="/var/lib/jenkins/open-dis-sourceforge-keys/id_rsa"/>
+   
+   <scp localFile="README.txt" 
+         todir="mcgredo,open-dis@frs.sourceforge.net:/home/frs/project/open-dis/open-dis"
+         trust="true"
+         keyfile="/var/lib/jenkins/open-dis-sourceforge-keys/id_rsa"/>
+    
+</target>
+
+<!-- If you're mcgredo, you can probably get away with using this one. -->
+<!-- It assumes you've got your public key uploaded to sourceforge,    -->
+<!-- you're an administrator for the open-dis project                  -->
+
+<target name="developerMachineUploadToSourceforge" depends="createZips">
+    
+    <scp localFile="open-dis-languages.zip" 
+         todir="mcgredo,open-dis@frs.sourceforge.net:/home/frs/project/open-dis/open-dis"
+         trust="true"
+         keyfile="/Users/mcgredo/.ssh/id_rsa"/>
+    
+</target>
+
+</project>

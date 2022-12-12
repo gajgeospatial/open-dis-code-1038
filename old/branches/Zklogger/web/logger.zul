@@ -1,0 +1,218 @@
+<window title="DIS Data Logger" width="640px" border="normal">
+
+<zscript>
+
+// This package and class are in the src directory; they get
+// copied into the jar file in the WEB-INF directory where
+// zk has access to it.
+import edu.nps.moves.DataUpdate;
+import edu.nps.moves.PduRowRenderer;
+import java.util.*;
+import edu.nps.moves.dis.*;
+
+
+DataUpdate updateObject;
+ArrayList pdus;
+
+
+/**
+ * Event handler for the start button push. Disables the user input
+ * widgets and launches a thread on the server that reads PDUs, 
+ * updating the local display.
+ */
+void start()
+{
+  // Start "server push", which is something of a misnomer. We actually start
+  // polling the server for updates.
+
+
+  if(!desktop.isServerPushEnabled())
+  {
+      desktop.enableServerPush(true);
+  }
+
+
+  multicastGroup.setReadonly(true);
+  port.setReadonly(true);
+  dataDirectory.setReadonly(true);
+  startButton.setDisabled(true);
+  resumeButton.setDisabled(true);
+  clearButton.setDisabled(true);
+  saveButton.setDisabled(true);
+
+  stopButton.setDisabled(false); 
+  
+
+  String groupString = multicastGroup.getText();
+  String portString  = port.getText();
+   
+  updateObject = new DataUpdate();
+  updateObject.socketSetup(groupString, portString);
+  updateObject.setUIElements(pduCount, pduGrid);
+  updateObject.clear(); 
+
+  //pduGrid.setRowRenderer(new PduRowRenderer());
+  //pduGrid.setModel(updateObject.getModel());
+
+  Thread aThread = new Thread(updateObject);
+  aThread.start();
+}
+
+/**
+ * Event handler for the stop button. Turn the UI widgets back on.
+ */
+
+void stop()
+{
+  // Stop listening for updates from the server
+  updateObject.setCeased(true);
+
+  if(desktop.isServerPushEnabled())
+  {
+      desktop.enableServerPush(false);
+  }
+
+
+  // Switch on UI stuff
+  multicastGroup.setReadonly(false);
+  port.setReadonly(false);
+  dataDirectory.setReadonly(true);
+
+  startButton.setDisabled(true);
+  resumeButton.setDisabled(false);
+  clearButton.setDisabled(false);
+  saveButton.setDisabled(true);
+
+  stopButton.setDisabled(true);
+}
+
+/**
+ * Event handler for the "resume" button
+ */
+
+void resume()
+{
+  // Start "server push", which is something of a misnomer. We actually start
+  // polling the server for updates.
+
+  if(!desktop.isServerPushEnabled())
+  {
+      desktop.enableServerPush(true);
+  }
+
+
+  // Switch off UI
+  multicastGroup.setReadonly(true);
+  port.setReadonly(true);
+  dataDirectory.setReadonly(true);
+
+  startButton.setDisabled(true);
+  resumeButton.setDisabled(true);
+  clearButton.setDisabled(true);
+  saveButton.setDisabled(true);
+
+  stopButton.setDisabled(false);
+
+  String groupString = multicastGroup.getText();
+  String portString  = port.getText();
+
+  updateObject.resume();
+  updateObject.socketSetup(groupString, portString);
+  updateObject.setUIElements(pduCount, pduGrid);
+  Thread aThread = new Thread(updateObject);
+  aThread.start();
+  
+}
+
+/** 
+ * Event handler for the "clear" button hit
+ */
+
+
+void clear()
+{
+
+  if(desktop.isServerPushEnabled())
+  {
+      desktop.enableServerPush(false);
+  }
+
+    updateObject.clear();
+
+  // Switch on UI stuff
+  multicastGroup.setReadonly(false);
+  port.setReadonly(false);
+  dataDirectory.setReadonly(true);
+
+  startButton.setDisabled(false);
+  resumeButton.setDisabled(true);
+  clearButton.setDisabled(true);
+  saveButton.setDisabled(true);
+  pduCount.setValue("0");
+  pduGrid.renderAll();
+
+  stopButton.setDisabled(true);
+  
+}
+
+/**
+ * Event handler for the "Save" button hit
+ */
+
+
+public void save();
+{
+}
+
+</zscript>
+
+<groupbox>
+ <caption label="Logger Control Panel"/>
+ <hbox width="100%" widths="70%, 30%">
+ <vbox>
+
+  <hbox>
+     <label value="Multicast Group:"/>
+     <textbox id="multicastGroup" value="239.1.2.3" cols="15"/>
+  </hbox>
+
+  <hbox>
+     <label value="Port:          "/>
+     <textbox id="port" value="62040" cols="5"/> 
+  </hbox>
+
+  <hbox>
+     <label value="Data Directory:"/>
+     <textbox id="dataDirectory" value="exercise" cols="20"/>
+  </hbox>
+
+  <hbox>
+     <label value="PDU Count:"/>
+     <textbox id="pduCount" value="0" cols="10"/>
+  </hbox>
+
+  
+ </vbox>
+ 
+  <hbox>
+    <button id="startButton"  label="Start"  onClick="start()"/>
+    <button id="stopButton"   label="Stop"   onClick="stop()"/>
+    <button id="resumeButton" label="Resume" onClick="resume()"/>
+    <button id="clearButton"  label="Clear"  onClick="clear()"/>
+    <button id="saveButton"   label="Save"   onClick="save()"/>
+  </hbox>
+ </hbox>
+</groupbox>
+
+<grid id="pduGrid" height="200px">
+  <columns>
+   <column id="typeColumn" label="Type"/>
+   <column id="timestampColumn" label="Timestamp"/>
+   <column id="contentColumn" label="Content"/>
+  </columns>
+  <rows>
+  </rows>
+</grid>
+
+
+</window>

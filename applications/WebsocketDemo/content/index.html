@@ -1,0 +1,171 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- DIS library -->
+        <script src="javascript/dis.js"></script>
+        
+        <!-- three.js 3d javascript library -->
+        <script src="javascript/three.js"></script>
+        
+ <script>
+        
+    /** Unique(ish) ID for this web page entity.*/
+    var uniqueId = Math.floor(Math.random() * 10000);
+    
+    /** List of all entities in the world */
+    var allEntities = {};
+    
+    /** The entity this web page controls */
+    var ourEntity = {};
+    
+    /** The websocket back to the server */
+    var websocket;
+    
+    /** three.js scene */
+    var renderer, scene;
+
+    /** Fired when the window is finished loading. Create the 3D scene and initialize
+     * communications with the server.
+     */
+    window.onload = function()
+    {
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize( 800, 640 );
+        document.body.appendChild( renderer.domElement );
+
+        scene = new THREE.Scene();
+
+        // Compatiability checks--not all web browsers support Websockets
+        if(window.WebSocket)
+            websocket = new WebSocket("ws://localhost:8282");//, "nve");
+        else if(Window.MozWebSocket)
+            websocket = new MozWebSocket("ws://localhost:8282");//, "nve");
+        else
+            alert("This web browser does not support web sockets");
+
+        // Note that though we have created the web socket, we can at this
+        // point still not send messages to the server. That can happen only
+        // after the onopen method is called at some later time.
+        
+        // Set the format we want to use to receive binary messages
+        websocket.binaryType = 'arraybuffer';
+
+        // Attach functions to the the web socket for various events
+        websocket.onopen = function(evt){console.log("websocket onopen");};
+        websocket.onclose = function(evt){console.log("websocket close");};
+        websocket.onerror = function(evt){console.log("websocket error");};
+
+        // Handle the messages sent from the server to us here
+        websocket.onmessage = function(evt)
+        {
+            // Convert the JSON into a javascript object
+           var disMessage = eval('(' + evt.data + ')' );
+           console.log(disMessage);
+           
+           // The entityID in the DIS message should be a unqiue triplet. We can
+           // use that as a key to create an attribute on an object--in effect this
+           // is a sneaky hash table.
+           eid = disMessage.entityID;
+           eidString = JSON.stringify(eid);
+           
+           // Look up the entity in our database. If not found, this is a 
+           // new entity and we should add it.
+           thisEntity = allEntities[eidString];
+           
+           // First time we've heard from this entity--create a new one to represent it
+           if(thisEntity === undefined)
+           {
+               console.log("heard from new entity ", eidString);
+               var newEntity = {};
+               newEntity.lastEspdu = disMessage;
+               var mesh = newCube(0xFF0000);
+               newEntity.mesh = mesh;
+               thisEntity = newEntity;
+               scene.add(mesh);
+           }
+           
+           thisEntity.mesh.position.x = disMessage.entityLocation.x;
+           thisEntity.mesh.position.y = disMessage.entityLocation.y;
+           thisEntity.mesh.position.z = disMessage.entityLocation.z;
+           
+           renderer.render( scene, camera );
+        };
+
+        // Scene setup
+        var camera = new THREE.PerspectiveCamera(35,         // Field of view
+                                                 800 / 640,  // Aspect ratio
+                                                 .1,         // Near
+                                                 10000);     // Far
+
+        camera.position.set( -15, 10, 15 );
+        camera.lookAt( scene.position );
+
+        // Put our cube, the cube controlled by our web page, at some semi-random position and color, so they don't
+        // sit on top of each other. Draw our cube as green, and all other cubes as red.
+        var mesh = newCube(0x00FF00);
+        ourEntity.mesh = mesh;
+        
+        // Create an espdu to represent our state
+        ourEntity.lastEspdu = new dis.EntityStatePdu();
+        
+        // Init the unique ID for this entity, and a position.
+        ourEntity.lastEspdu.entityID.entity = Math.round(Math.random() * 15000);
+        ourEntity.lastEspdu.entityLocation.x = Math.round(Math.random() * 7);
+        ourEntity.lastEspdu.entityLocation.y = Math.round(Math.random() * 7);
+        ourEntity.lastEspdu.entityLocation.z = Math.round(Math.random() * 7);
+        
+        // Set the position of the mesh.
+        ourEntity.mesh.position.x = ourEntity.lastEspdu.entityLocation.x;
+        ourEntity.mesh.position.y = ourEntity.lastEspdu.entityLocation.y;
+        ourEntity.mesh.position.z = ourEntity.lastEspdu.entityLocation.z;
+       
+        scene.add( ourEntity.mesh );
+
+        var light = new THREE.PointLight( 0xFFFF00 );
+        light.position.set( 10, 0, 10 );
+        scene.add( light );
+        renderer.render( scene, camera );
+
+        // Periodically send heartbeat messages
+        setInterval(heartbeat, 1000);
+
+        console.log("started web page");
+    };  
+    
+    /**
+     * Periodically send  messages to the server
+     */
+    function heartbeat()
+    {
+        //console.log("heartbeat");
+        websocket.send(JSON.stringify(ourEntity.lastEspdu));
+    }
+    
+    /**
+     * Returns a THREE.Mesh cube
+     * @param myColor RGB value, two bytes per value eg 0xFF0000 is red.
+     */
+    function newCube(myColor)
+    {
+        var geometry = new THREE.CubeGeometry( 3, 3, 3 );
+        var material = new THREE.MeshLambertMaterial( { color: myColor } );
+        var mesh = new THREE.Mesh( geometry, material );
+        
+        return mesh;
+    }
+            
+ </script>
+    </head>
+    
+    
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,49 @@
+#X3D V3.0 utf8
+
+PROFILE Immersive
+COMPONENT DIS:1
+
+Viewpoint {
+   position 0 0 110
+}
+
+# Entity controlled from darkstar--this entity is hosted server side (constructive).
+EspduTransform {
+   address "239.2.2.3"
+   port 62040
+   siteID 17 
+   applicationID 3 
+   entityID 0
+   networkMode "networkReader"
+    children [
+        Shape { appearance Appearance { material Material { diffuseColor 1 1 0 }} geometry Box {size 1 3 9} }
+    ]
+}
+
+# Controlled from X3D, namely the slider application (virtual)
+EspduTransform {
+   address "239.2.2.3"
+   port 62040
+   siteID 17
+   applicationID 1
+   entityID 0 
+   networkMode "networkReader"
+    children [
+        Shape { appearance Appearance { material Material { diffuseColor 1 0 1 }} geometry Box {size 1 3 9} }
+    ]
+}
+
+# Controlled from iPhone (live)
+EspduTransform {
+   address "239.2.2.3"
+   port 62040
+   siteID 17 
+   applicationID 6 
+   entityID 0 
+   networkMode "networkReader"
+    children [
+        Shape { appearance Appearance { material Material { diffuseColor 0 1 0 }} geometry Box {size 1 3 9} }
+    ]
+}
+
+

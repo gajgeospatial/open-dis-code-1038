@@ -1,0 +1,33 @@
+Continuous integration build support is maintained at
+https://savage.nps.edu/jenkins/job/Open-DIS-Java
+
+Project Open-DIS-Java description:
+
+
+<p>
+<a href="http://open-dis.sourceforge.net">Open-DIS</a>
+ is an open-source implementation of the IEEE Distributed Interactive Simulation (DIS) protocol used by the
+<a href="https://savage.nps.edu/AuvWorkbench">AUV Workbench</a>,
+<a href="https://savage.nps.edu/X3D-Edit/#Open-DIS">X3D-Edit</a>, 
+<a href="https://savage.nps.edu/developers.html#Xj3D">Xj3D</a> and other tools.
+</p>
+<p>
+The overall Open-DIS project contains many components which are available via
+<a href="https://open-dis.svn.sourceforge.net">subversion</a>.
+</p>
+<p>
+This project builds the Java language API for Open-DIS.
+Locally built 
+<a href="ws/trunk/dist/docs/index.html">javadoc</a>
+is available.
+</p>
+
+
+Project configuration:
+
+Subversion   https://open-dis.svn.sourceforge.net/svnroot/open-dis/languages/java/trunk
+Schedule     2 0 * * *
+ant          dist
+Checkstyle   trunk/checkstyle_results.xml
+Findbugs     **/findbugsXml.xml
+JUnit report trunk/build/testReportOutputDir/*.xml

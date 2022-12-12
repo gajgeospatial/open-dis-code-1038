@@ -1,0 +1,1151 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		196C1DC311D2B04B00CB6A9F /* CoordinateTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 196C1DC211D2B04B00CB6A9F /* CoordinateTransform.m */; };
+		196C1E4F11D32C5000CB6A9F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 196C1E4E11D32C5000CB6A9F /* Settings.bundle */; };
+		198AF95811CC34EF00719B2B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198AF95711CC34EF00719B2B /* MapKit.framework */; };
+		198AF97011CC35AA00719B2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198AF96F11CC35AA00719B2B /* CoreLocation.framework */; };
+		198AF97411CC35C100719B2B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 198AF97311CC35C100719B2B /* CFNetwork.framework */; };
+		198AFAA511CFCE8400719B2B /* AcknowledgePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98511CFCE8400719B2B /* AcknowledgePdu.m */; };
+		198AFAA611CFCE8400719B2B /* AcknowledgeReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98711CFCE8400719B2B /* AcknowledgeReliablePdu.m */; };
+		198AFAA711CFCE8400719B2B /* AcousticBeamData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98911CFCE8400719B2B /* AcousticBeamData.m */; };
+		198AFAA811CFCE8400719B2B /* AcousticBeamFundamentalParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98B11CFCE8400719B2B /* AcousticBeamFundamentalParameter.m */; };
+		198AFAA911CFCE8400719B2B /* AcousticEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98D11CFCE8400719B2B /* AcousticEmitter.m */; };
+		198AFAAA11CFCE8400719B2B /* AcousticEmitterSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF98F11CFCE8400719B2B /* AcousticEmitterSystem.m */; };
+		198AFAAB11CFCE8400719B2B /* AcousticEmitterSystemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99111CFCE8400719B2B /* AcousticEmitterSystemData.m */; };
+		198AFAAC11CFCE8400719B2B /* ActionRequestPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99311CFCE8400719B2B /* ActionRequestPdu.m */; };
+		198AFAAD11CFCE8400719B2B /* ActionRequestReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99511CFCE8400719B2B /* ActionRequestReliablePdu.m */; };
+		198AFAAE11CFCE8400719B2B /* ActionResponsePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99711CFCE8400719B2B /* ActionResponsePdu.m */; };
+		198AFAAF11CFCE8400719B2B /* ActionResponseReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99911CFCE8400719B2B /* ActionResponseReliablePdu.m */; };
+		198AFAB011CFCE8400719B2B /* AggregateID.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99B11CFCE8400719B2B /* AggregateID.m */; };
+		198AFAB111CFCE8400719B2B /* AggregateMarking.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99D11CFCE8400719B2B /* AggregateMarking.m */; };
+		198AFAB211CFCE8400719B2B /* AggregateStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF99F11CFCE8400719B2B /* AggregateStatePdu.m */; };
+		198AFAB311CFCE8400719B2B /* AggregateType.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9A111CFCE8400719B2B /* AggregateType.m */; };
+		198AFAB411CFCE8400719B2B /* AngularVelocityVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9A311CFCE8400719B2B /* AngularVelocityVector.m */; };
+		198AFAB511CFCE8400719B2B /* AntennaLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9A511CFCE8400719B2B /* AntennaLocation.m */; };
+		198AFAB611CFCE8400719B2B /* ApaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9A711CFCE8400719B2B /* ApaData.m */; };
+		198AFAB711CFCE8400719B2B /* ArealObjectStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9A911CFCE8400719B2B /* ArealObjectStatePdu.m */; };
+		198AFAB811CFCE8400719B2B /* ArticulationParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9AB11CFCE8400719B2B /* ArticulationParameter.m */; };
+		198AFAB911CFCE8400719B2B /* BeamAntennaPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9AD11CFCE8400719B2B /* BeamAntennaPattern.m */; };
+		198AFABA11CFCE8400719B2B /* BeamData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9AF11CFCE8400719B2B /* BeamData.m */; };
+		198AFABB11CFCE8400719B2B /* BurstDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9B111CFCE8400719B2B /* BurstDescriptor.m */; };
+		198AFABC11CFCE8400719B2B /* ClockTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9B311CFCE8400719B2B /* ClockTime.m */; };
+		198AFABD11CFCE8400719B2B /* CollisionElasticPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9B511CFCE8400719B2B /* CollisionElasticPdu.m */; };
+		198AFABE11CFCE8400719B2B /* CollisionPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9B711CFCE8400719B2B /* CollisionPdu.m */; };
+		198AFABF11CFCE8400719B2B /* CommentPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9B911CFCE8400719B2B /* CommentPdu.m */; };
+		198AFAC011CFCE8400719B2B /* CommentReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9BB11CFCE8400719B2B /* CommentReliablePdu.m */; };
+		198AFAC111CFCE8400719B2B /* CreateEntityPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9BD11CFCE8400719B2B /* CreateEntityPdu.m */; };
+		198AFAC211CFCE8400719B2B /* CreateEntityReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9BF11CFCE8400719B2B /* CreateEntityReliablePdu.m */; };
+		198AFAC311CFCE8400719B2B /* DataInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9C111CFCE8400719B2B /* DataInput.m */; };
+		198AFAC411CFCE8400719B2B /* DataOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9C311CFCE8400719B2B /* DataOutput.m */; };
+		198AFAC511CFCE8400719B2B /* DataPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9C511CFCE8400719B2B /* DataPdu.m */; };
+		198AFAC611CFCE8400719B2B /* DataQueryPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9C711CFCE8400719B2B /* DataQueryPdu.m */; };
+		198AFAC711CFCE8400719B2B /* DataQueryReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9C911CFCE8400719B2B /* DataQueryReliablePdu.m */; };
+		198AFAC811CFCE8400719B2B /* DataReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9CB11CFCE8400719B2B /* DataReliablePdu.m */; };
+		198AFAC911CFCE8400719B2B /* DeadReckoningParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9CD11CFCE8400719B2B /* DeadReckoningParameter.m */; };
+		198AFACA11CFCE8400719B2B /* DesignatorPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9CF11CFCE8400719B2B /* DesignatorPdu.m */; };
+		198AFACB11CFCE8400719B2B /* DetonationPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9D111CFCE8400719B2B /* DetonationPdu.m */; };
+		198AFACC11CFCE8400719B2B /* DisPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9D311CFCE8400719B2B /* DisPoint.m */; };
+		198AFACD11CFCE8400719B2B /* DistributedEmissionsFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9D511CFCE8400719B2B /* DistributedEmissionsFamilyPdu.m */; };
+		198AFACE11CFCE8400719B2B /* EightByteChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9D711CFCE8400719B2B /* EightByteChunk.m */; };
+		198AFACF11CFCE8400719B2B /* ElectronicEmissionBeamData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9D911CFCE8400719B2B /* ElectronicEmissionBeamData.m */; };
+		198AFAD011CFCE8400719B2B /* ElectronicEmissionsPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9DB11CFCE8400719B2B /* ElectronicEmissionsPdu.m */; };
+		198AFAD111CFCE8400719B2B /* ElectronicEmissionSystemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9DD11CFCE8400719B2B /* ElectronicEmissionSystemData.m */; };
+		198AFAD211CFCE8400719B2B /* EmitterSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9DF11CFCE8400719B2B /* EmitterSystem.m */; };
+		198AFAD311CFCE8400719B2B /* EntityID.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E111CFCE8400719B2B /* EntityID.m */; };
+		198AFAD411CFCE8400719B2B /* EntityInformationFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E311CFCE8400719B2B /* EntityInformationFamilyPdu.m */; };
+		198AFAD511CFCE8400719B2B /* EntityManagementFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E511CFCE8400719B2B /* EntityManagementFamilyPdu.m */; };
+		198AFAD611CFCE8400719B2B /* EntityStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E711CFCE8400719B2B /* EntityStatePdu.m */; };
+		198AFAD711CFCE8400719B2B /* EntityStateUpdatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9E911CFCE8400719B2B /* EntityStateUpdatePdu.m */; };
+		198AFAD811CFCE8400719B2B /* EntityType.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9EB11CFCE8400719B2B /* EntityType.m */; };
+		198AFAD911CFCE8400719B2B /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9ED11CFCE8400719B2B /* Environment.m */; };
+		198AFADA11CFCE8400719B2B /* EnvironmentalProcessPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9EF11CFCE8400719B2B /* EnvironmentalProcessPdu.m */; };
+		198AFADB11CFCE8400719B2B /* EventID.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9F111CFCE8400719B2B /* EventID.m */; };
+		198AFADC11CFCE8400719B2B /* EventReportPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9F311CFCE8400719B2B /* EventReportPdu.m */; };
+		198AFADD11CFCE8400719B2B /* EventReportReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9F511CFCE8400719B2B /* EventReportReliablePdu.m */; };
+		198AFADE11CFCE8400719B2B /* FastEntityStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9F711CFCE8400719B2B /* FastEntityStatePdu.m */; };
+		198AFADF11CFCE8400719B2B /* FirePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9F911CFCE8400719B2B /* FirePdu.m */; };
+		198AFAE011CFCE8400719B2B /* FixedDatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9FB11CFCE8400719B2B /* FixedDatum.m */; };
+		198AFAE111CFCE8400719B2B /* FourByteChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9FD11CFCE8400719B2B /* FourByteChunk.m */; };
+		198AFAE211CFCE8400719B2B /* FundamentalParameterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AF9FF11CFCE8400719B2B /* FundamentalParameterData.m */; };
+		198AFAE311CFCE8400719B2B /* FundamentalParameterDataIff.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0111CFCE8400719B2B /* FundamentalParameterDataIff.m */; };
+		198AFAE411CFCE8400719B2B /* GridAxisRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0311CFCE8400719B2B /* GridAxisRecord.m */; };
+		198AFAE511CFCE8400719B2B /* GridAxisRecordRepresentation0.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0511CFCE8400719B2B /* GridAxisRecordRepresentation0.m */; };
+		198AFAE611CFCE8400719B2B /* GridAxisRecordRepresentation1.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0711CFCE8400719B2B /* GridAxisRecordRepresentation1.m */; };
+		198AFAE711CFCE8400719B2B /* GridAxisRecordRepresentation2.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0911CFCE8400719B2B /* GridAxisRecordRepresentation2.m */; };
+		198AFAE811CFCE8400719B2B /* GriddedDataPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0B11CFCE8400719B2B /* GriddedDataPdu.m */; };
+		198AFAE911CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0D11CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.m */; };
+		198AFAEA11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA0F11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.m */; };
+		198AFAEB11CFCE8400719B2B /* IffFundamentalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1111CFCE8400719B2B /* IffFundamentalData.m */; };
+		198AFAEC11CFCE8400719B2B /* IntercomCommunicationsParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1311CFCE8400719B2B /* IntercomCommunicationsParameters.m */; };
+		198AFAED11CFCE8400719B2B /* IntercomControlPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1511CFCE8400719B2B /* IntercomControlPdu.m */; };
+		198AFAEE11CFCE8400719B2B /* IntercomSignalPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1711CFCE8400719B2B /* IntercomSignalPdu.m */; };
+		198AFAEF11CFCE8400719B2B /* IsGroupOfPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1911CFCE8400719B2B /* IsGroupOfPdu.m */; };
+		198AFAF011CFCE8400719B2B /* IsPartOfPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1B11CFCE8400719B2B /* IsPartOfPdu.m */; };
+		198AFAF111CFCE8400719B2B /* LayerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1D11CFCE8400719B2B /* LayerHeader.m */; };
+		198AFAF211CFCE8400719B2B /* LinearObjectStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA1F11CFCE8400719B2B /* LinearObjectStatePdu.m */; };
+		198AFAF311CFCE8400719B2B /* LinearSegmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2111CFCE8400719B2B /* LinearSegmentParameter.m */; };
+		198AFAF411CFCE8400719B2B /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2311CFCE8400719B2B /* Location.m */; };
+		198AFAF511CFCE8400719B2B /* LogisticsFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2511CFCE8400719B2B /* LogisticsFamilyPdu.m */; };
+		198AFAF611CFCE8400719B2B /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2711CFCE8400719B2B /* MapAnnotation.m */; };
+		198AFAF711CFCE8400719B2B /* MapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2911CFCE8400719B2B /* MapViewDelegate.m */; };
+		198AFAF811CFCE8400719B2B /* Marking.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2B11CFCE8400719B2B /* Marking.m */; };
+		198AFAF911CFCE8400719B2B /* MinefieldDataPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2D11CFCE8400719B2B /* MinefieldDataPdu.m */; };
+		198AFAFA11CFCE8400719B2B /* MinefieldFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA2F11CFCE8400719B2B /* MinefieldFamilyPdu.m */; };
+		198AFAFB11CFCE8400719B2B /* MinefieldQueryPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3111CFCE8400719B2B /* MinefieldQueryPdu.m */; };
+		198AFAFC11CFCE8400719B2B /* MinefieldResponseNackPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3311CFCE8400719B2B /* MinefieldResponseNackPdu.m */; };
+		198AFAFD11CFCE8400719B2B /* MinefieldStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3511CFCE8400719B2B /* MinefieldStatePdu.m */; };
+		198AFAFE11CFCE8400719B2B /* ModulationType.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3711CFCE8400719B2B /* ModulationType.m */; };
+		198AFAFF11CFCE8400719B2B /* NamedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3911CFCE8400719B2B /* NamedLocation.m */; };
+		198AFB0011CFCE8400719B2B /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3B11CFCE8400719B2B /* Network.m */; };
+		198AFB0111CFCE8400719B2B /* NPSAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3D11CFCE8400719B2B /* NPSAnnotationView.m */; };
+		198AFB0211CFCE8400719B2B /* ObjectType.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA3F11CFCE8400719B2B /* ObjectType.m */; };
+		198AFB0311CFCE8400719B2B /* OneByteChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4111CFCE8400719B2B /* OneByteChunk.m */; };
+		198AFB0411CFCE8400719B2B /* Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4311CFCE8400719B2B /* Orientation.m */; };
+		198AFB0511CFCE8400719B2B /* Pdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4511CFCE8400719B2B /* Pdu.m */; };
+		198AFB0611CFCE8400719B2B /* PduContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4711CFCE8400719B2B /* PduContainer.m */; };
+		198AFB0711CFCE8400719B2B /* PduDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4911CFCE8400719B2B /* PduDispatcher.m */; };
+		198AFB0811CFCE8400719B2B /* PduFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4B11CFCE8400719B2B /* PduFactory.m */; };
+		198AFB0911CFCE8400719B2B /* PointObjectStatePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA4E11CFCE8400719B2B /* PointObjectStatePdu.m */; };
+		198AFB0A11CFCE8400719B2B /* PropulsionSystemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5011CFCE8400719B2B /* PropulsionSystemData.m */; };
+		198AFB0B11CFCE8400719B2B /* RadioCommunicationsFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5211CFCE8400719B2B /* RadioCommunicationsFamilyPdu.m */; };
+		198AFB0C11CFCE8400719B2B /* RadioEntityType.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5411CFCE8400719B2B /* RadioEntityType.m */; };
+		198AFB0D11CFCE8400719B2B /* ReceiverPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5611CFCE8400719B2B /* ReceiverPdu.m */; };
+		198AFB0E11CFCE8400719B2B /* RecordQueryReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5811CFCE8400719B2B /* RecordQueryReliablePdu.m */; };
+		198AFB0F11CFCE8400719B2B /* RecordSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5A11CFCE8400719B2B /* RecordSet.m */; };
+		198AFB1011CFCE8400719B2B /* Relationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5C11CFCE8400719B2B /* Relationship.m */; };
+		198AFB1111CFCE8400719B2B /* RemoveEntityPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA5E11CFCE8400719B2B /* RemoveEntityPdu.m */; };
+		198AFB1211CFCE8400719B2B /* RemoveEntityReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6011CFCE8400719B2B /* RemoveEntityReliablePdu.m */; };
+		198AFB1311CFCE8400719B2B /* RepairCompletePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6211CFCE8400719B2B /* RepairCompletePdu.m */; };
+		198AFB1411CFCE8400719B2B /* RepairResponsePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6411CFCE8400719B2B /* RepairResponsePdu.m */; };
+		198AFB1511CFCE8400719B2B /* ResupplyCancelPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6611CFCE8400719B2B /* ResupplyCancelPdu.m */; };
+		198AFB1611CFCE8400719B2B /* ResupplyOfferPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6811CFCE8400719B2B /* ResupplyOfferPdu.m */; };
+		198AFB1711CFCE8400719B2B /* ResupplyReceivedPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6A11CFCE8400719B2B /* ResupplyReceivedPdu.m */; };
+		198AFB1811CFCE8400719B2B /* SeesPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6C11CFCE8400719B2B /* SeesPdu.m */; };
+		198AFB1911CFCE8400719B2B /* ServiceRequestPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA6E11CFCE8400719B2B /* ServiceRequestPdu.m */; };
+		198AFB1A11CFCE8400719B2B /* SetDataPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7011CFCE8400719B2B /* SetDataPdu.m */; };
+		198AFB1B11CFCE8400719B2B /* SetDataReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7211CFCE8400719B2B /* SetDataReliablePdu.m */; };
+		198AFB1C11CFCE8400719B2B /* SetRecordReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7411CFCE8400719B2B /* SetRecordReliablePdu.m */; };
+		198AFB1D11CFCE8400719B2B /* ShaftRPMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7611CFCE8400719B2B /* ShaftRPMs.m */; };
+		198AFB1E11CFCE8400719B2B /* SignalPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7811CFCE8400719B2B /* SignalPdu.m */; };
+		198AFB1F11CFCE8400719B2B /* SimulationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7A11CFCE8400719B2B /* SimulationAddress.m */; };
+		198AFB2011CFCE8400719B2B /* SimulationManagementFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7C11CFCE8400719B2B /* SimulationManagementFamilyPdu.m */; };
+		198AFB2111CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA7E11CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.m */; };
+		198AFB2211CFCE8400719B2B /* SixByteChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8011CFCE8400719B2B /* SixByteChunk.m */; };
+		198AFB2311CFCE8400719B2B /* SphericalHarmonicAntennaPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8211CFCE8400719B2B /* SphericalHarmonicAntennaPattern.m */; };
+		198AFB2411CFCE8400719B2B /* StartResumePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8411CFCE8400719B2B /* StartResumePdu.m */; };
+		198AFB2511CFCE8400719B2B /* StartResumeReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8611CFCE8400719B2B /* StartResumeReliablePdu.m */; };
+		198AFB2611CFCE8400719B2B /* StopFreezePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8811CFCE8400719B2B /* StopFreezePdu.m */; };
+		198AFB2711CFCE8400719B2B /* StopFreezeReliablePdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8A11CFCE8400719B2B /* StopFreezeReliablePdu.m */; };
+		198AFB2811CFCE8400719B2B /* SupplyQuantity.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8C11CFCE8400719B2B /* SupplyQuantity.m */; };
+		198AFB2911CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA8E11CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.m */; };
+		198AFB2A11CFCE8400719B2B /* SystemID.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9011CFCE8400719B2B /* SystemID.m */; };
+		198AFB2B11CFCE8400719B2B /* TrackJamTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9211CFCE8400719B2B /* TrackJamTarget.m */; };
+		198AFB2C11CFCE8400719B2B /* TransferControlRequestPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9411CFCE8400719B2B /* TransferControlRequestPdu.m */; };
+		198AFB2D11CFCE8400719B2B /* TransmitterPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9611CFCE8400719B2B /* TransmitterPdu.m */; };
+		198AFB2E11CFCE8400719B2B /* TwoByteChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9811CFCE8400719B2B /* TwoByteChunk.m */; };
+		198AFB2F11CFCE8400719B2B /* UaPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9A11CFCE8400719B2B /* UaPdu.m */; };
+		198AFB3011CFCE8400719B2B /* VariableDatum.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9C11CFCE8400719B2B /* VariableDatum.m */; };
+		198AFB3111CFCE8400719B2B /* Vector3Double.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFA9E11CFCE8400719B2B /* Vector3Double.m */; };
+		198AFB3211CFCE8400719B2B /* Vector3Float.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFAA011CFCE8400719B2B /* Vector3Float.m */; };
+		198AFB3311CFCE8400719B2B /* VectoringNozzleSystemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFAA211CFCE8400719B2B /* VectoringNozzleSystemData.m */; };
+		198AFB3411CFCE8400719B2B /* WarfareFamilyPdu.m in Sources */ = {isa = PBXBuildFile; fileRef = 198AFAA411CFCE8400719B2B /* WarfareFamilyPdu.m */; };
+		1D3623260D0F684500981E51 /* DisMapIpadAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DisMapIpadAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* DisMapIpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* DisMapIpadViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* DisMapIpadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* DisMapIpadViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		196C1DC111D2B04B00CB6A9F /* CoordinateTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateTransform.h; sourceTree = "<group>"; };
+		196C1DC211D2B04B00CB6A9F /* CoordinateTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateTransform.m; sourceTree = "<group>"; };
+		196C1E4E11D32C5000CB6A9F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		198AF95711CC34EF00719B2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		198AF96F11CC35AA00719B2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		198AF97311CC35C100719B2B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		198AF98411CFCE8400719B2B /* AcknowledgePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgePdu.h; sourceTree = "<group>"; };
+		198AF98511CFCE8400719B2B /* AcknowledgePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgePdu.m; sourceTree = "<group>"; };
+		198AF98611CFCE8400719B2B /* AcknowledgeReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgeReliablePdu.h; sourceTree = "<group>"; };
+		198AF98711CFCE8400719B2B /* AcknowledgeReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgeReliablePdu.m; sourceTree = "<group>"; };
+		198AF98811CFCE8400719B2B /* AcousticBeamData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcousticBeamData.h; sourceTree = "<group>"; };
+		198AF98911CFCE8400719B2B /* AcousticBeamData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcousticBeamData.m; sourceTree = "<group>"; };
+		198AF98A11CFCE8400719B2B /* AcousticBeamFundamentalParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcousticBeamFundamentalParameter.h; sourceTree = "<group>"; };
+		198AF98B11CFCE8400719B2B /* AcousticBeamFundamentalParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcousticBeamFundamentalParameter.m; sourceTree = "<group>"; };
+		198AF98C11CFCE8400719B2B /* AcousticEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcousticEmitter.h; sourceTree = "<group>"; };
+		198AF98D11CFCE8400719B2B /* AcousticEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcousticEmitter.m; sourceTree = "<group>"; };
+		198AF98E11CFCE8400719B2B /* AcousticEmitterSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcousticEmitterSystem.h; sourceTree = "<group>"; };
+		198AF98F11CFCE8400719B2B /* AcousticEmitterSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcousticEmitterSystem.m; sourceTree = "<group>"; };
+		198AF99011CFCE8400719B2B /* AcousticEmitterSystemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcousticEmitterSystemData.h; sourceTree = "<group>"; };
+		198AF99111CFCE8400719B2B /* AcousticEmitterSystemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcousticEmitterSystemData.m; sourceTree = "<group>"; };
+		198AF99211CFCE8400719B2B /* ActionRequestPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionRequestPdu.h; sourceTree = "<group>"; };
+		198AF99311CFCE8400719B2B /* ActionRequestPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionRequestPdu.m; sourceTree = "<group>"; };
+		198AF99411CFCE8400719B2B /* ActionRequestReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionRequestReliablePdu.h; sourceTree = "<group>"; };
+		198AF99511CFCE8400719B2B /* ActionRequestReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionRequestReliablePdu.m; sourceTree = "<group>"; };
+		198AF99611CFCE8400719B2B /* ActionResponsePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionResponsePdu.h; sourceTree = "<group>"; };
+		198AF99711CFCE8400719B2B /* ActionResponsePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionResponsePdu.m; sourceTree = "<group>"; };
+		198AF99811CFCE8400719B2B /* ActionResponseReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionResponseReliablePdu.h; sourceTree = "<group>"; };
+		198AF99911CFCE8400719B2B /* ActionResponseReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionResponseReliablePdu.m; sourceTree = "<group>"; };
+		198AF99A11CFCE8400719B2B /* AggregateID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregateID.h; sourceTree = "<group>"; };
+		198AF99B11CFCE8400719B2B /* AggregateID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregateID.m; sourceTree = "<group>"; };
+		198AF99C11CFCE8400719B2B /* AggregateMarking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregateMarking.h; sourceTree = "<group>"; };
+		198AF99D11CFCE8400719B2B /* AggregateMarking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregateMarking.m; sourceTree = "<group>"; };
+		198AF99E11CFCE8400719B2B /* AggregateStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregateStatePdu.h; sourceTree = "<group>"; };
+		198AF99F11CFCE8400719B2B /* AggregateStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregateStatePdu.m; sourceTree = "<group>"; };
+		198AF9A011CFCE8400719B2B /* AggregateType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AggregateType.h; sourceTree = "<group>"; };
+		198AF9A111CFCE8400719B2B /* AggregateType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AggregateType.m; sourceTree = "<group>"; };
+		198AF9A211CFCE8400719B2B /* AngularVelocityVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngularVelocityVector.h; sourceTree = "<group>"; };
+		198AF9A311CFCE8400719B2B /* AngularVelocityVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngularVelocityVector.m; sourceTree = "<group>"; };
+		198AF9A411CFCE8400719B2B /* AntennaLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntennaLocation.h; sourceTree = "<group>"; };
+		198AF9A511CFCE8400719B2B /* AntennaLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntennaLocation.m; sourceTree = "<group>"; };
+		198AF9A611CFCE8400719B2B /* ApaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApaData.h; sourceTree = "<group>"; };
+		198AF9A711CFCE8400719B2B /* ApaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApaData.m; sourceTree = "<group>"; };
+		198AF9A811CFCE8400719B2B /* ArealObjectStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArealObjectStatePdu.h; sourceTree = "<group>"; };
+		198AF9A911CFCE8400719B2B /* ArealObjectStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArealObjectStatePdu.m; sourceTree = "<group>"; };
+		198AF9AA11CFCE8400719B2B /* ArticulationParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticulationParameter.h; sourceTree = "<group>"; };
+		198AF9AB11CFCE8400719B2B /* ArticulationParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticulationParameter.m; sourceTree = "<group>"; };
+		198AF9AC11CFCE8400719B2B /* BeamAntennaPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamAntennaPattern.h; sourceTree = "<group>"; };
+		198AF9AD11CFCE8400719B2B /* BeamAntennaPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAntennaPattern.m; sourceTree = "<group>"; };
+		198AF9AE11CFCE8400719B2B /* BeamData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamData.h; sourceTree = "<group>"; };
+		198AF9AF11CFCE8400719B2B /* BeamData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamData.m; sourceTree = "<group>"; };
+		198AF9B011CFCE8400719B2B /* BurstDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BurstDescriptor.h; sourceTree = "<group>"; };
+		198AF9B111CFCE8400719B2B /* BurstDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BurstDescriptor.m; sourceTree = "<group>"; };
+		198AF9B211CFCE8400719B2B /* ClockTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockTime.h; sourceTree = "<group>"; };
+		198AF9B311CFCE8400719B2B /* ClockTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockTime.m; sourceTree = "<group>"; };
+		198AF9B411CFCE8400719B2B /* CollisionElasticPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionElasticPdu.h; sourceTree = "<group>"; };
+		198AF9B511CFCE8400719B2B /* CollisionElasticPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionElasticPdu.m; sourceTree = "<group>"; };
+		198AF9B611CFCE8400719B2B /* CollisionPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionPdu.h; sourceTree = "<group>"; };
+		198AF9B711CFCE8400719B2B /* CollisionPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionPdu.m; sourceTree = "<group>"; };
+		198AF9B811CFCE8400719B2B /* CommentPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentPdu.h; sourceTree = "<group>"; };
+		198AF9B911CFCE8400719B2B /* CommentPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentPdu.m; sourceTree = "<group>"; };
+		198AF9BA11CFCE8400719B2B /* CommentReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentReliablePdu.h; sourceTree = "<group>"; };
+		198AF9BB11CFCE8400719B2B /* CommentReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentReliablePdu.m; sourceTree = "<group>"; };
+		198AF9BC11CFCE8400719B2B /* CreateEntityPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEntityPdu.h; sourceTree = "<group>"; };
+		198AF9BD11CFCE8400719B2B /* CreateEntityPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEntityPdu.m; sourceTree = "<group>"; };
+		198AF9BE11CFCE8400719B2B /* CreateEntityReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEntityReliablePdu.h; sourceTree = "<group>"; };
+		198AF9BF11CFCE8400719B2B /* CreateEntityReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEntityReliablePdu.m; sourceTree = "<group>"; };
+		198AF9C011CFCE8400719B2B /* DataInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataInput.h; sourceTree = "<group>"; };
+		198AF9C111CFCE8400719B2B /* DataInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInput.m; sourceTree = "<group>"; };
+		198AF9C211CFCE8400719B2B /* DataOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOutput.h; sourceTree = "<group>"; };
+		198AF9C311CFCE8400719B2B /* DataOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOutput.m; sourceTree = "<group>"; };
+		198AF9C411CFCE8400719B2B /* DataPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPdu.h; sourceTree = "<group>"; };
+		198AF9C511CFCE8400719B2B /* DataPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPdu.m; sourceTree = "<group>"; };
+		198AF9C611CFCE8400719B2B /* DataQueryPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataQueryPdu.h; sourceTree = "<group>"; };
+		198AF9C711CFCE8400719B2B /* DataQueryPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataQueryPdu.m; sourceTree = "<group>"; };
+		198AF9C811CFCE8400719B2B /* DataQueryReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataQueryReliablePdu.h; sourceTree = "<group>"; };
+		198AF9C911CFCE8400719B2B /* DataQueryReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataQueryReliablePdu.m; sourceTree = "<group>"; };
+		198AF9CA11CFCE8400719B2B /* DataReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataReliablePdu.h; sourceTree = "<group>"; };
+		198AF9CB11CFCE8400719B2B /* DataReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataReliablePdu.m; sourceTree = "<group>"; };
+		198AF9CC11CFCE8400719B2B /* DeadReckoningParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadReckoningParameter.h; sourceTree = "<group>"; };
+		198AF9CD11CFCE8400719B2B /* DeadReckoningParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeadReckoningParameter.m; sourceTree = "<group>"; };
+		198AF9CE11CFCE8400719B2B /* DesignatorPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignatorPdu.h; sourceTree = "<group>"; };
+		198AF9CF11CFCE8400719B2B /* DesignatorPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignatorPdu.m; sourceTree = "<group>"; };
+		198AF9D011CFCE8400719B2B /* DetonationPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetonationPdu.h; sourceTree = "<group>"; };
+		198AF9D111CFCE8400719B2B /* DetonationPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetonationPdu.m; sourceTree = "<group>"; };
+		198AF9D211CFCE8400719B2B /* DisPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisPoint.h; sourceTree = "<group>"; };
+		198AF9D311CFCE8400719B2B /* DisPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisPoint.m; sourceTree = "<group>"; };
+		198AF9D411CFCE8400719B2B /* DistributedEmissionsFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistributedEmissionsFamilyPdu.h; sourceTree = "<group>"; };
+		198AF9D511CFCE8400719B2B /* DistributedEmissionsFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributedEmissionsFamilyPdu.m; sourceTree = "<group>"; };
+		198AF9D611CFCE8400719B2B /* EightByteChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EightByteChunk.h; sourceTree = "<group>"; };
+		198AF9D711CFCE8400719B2B /* EightByteChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EightByteChunk.m; sourceTree = "<group>"; };
+		198AF9D811CFCE8400719B2B /* ElectronicEmissionBeamData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectronicEmissionBeamData.h; sourceTree = "<group>"; };
+		198AF9D911CFCE8400719B2B /* ElectronicEmissionBeamData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElectronicEmissionBeamData.m; sourceTree = "<group>"; };
+		198AF9DA11CFCE8400719B2B /* ElectronicEmissionsPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectronicEmissionsPdu.h; sourceTree = "<group>"; };
+		198AF9DB11CFCE8400719B2B /* ElectronicEmissionsPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElectronicEmissionsPdu.m; sourceTree = "<group>"; };
+		198AF9DC11CFCE8400719B2B /* ElectronicEmissionSystemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectronicEmissionSystemData.h; sourceTree = "<group>"; };
+		198AF9DD11CFCE8400719B2B /* ElectronicEmissionSystemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElectronicEmissionSystemData.m; sourceTree = "<group>"; };
+		198AF9DE11CFCE8400719B2B /* EmitterSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterSystem.h; sourceTree = "<group>"; };
+		198AF9DF11CFCE8400719B2B /* EmitterSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmitterSystem.m; sourceTree = "<group>"; };
+		198AF9E011CFCE8400719B2B /* EntityID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityID.h; sourceTree = "<group>"; };
+		198AF9E111CFCE8400719B2B /* EntityID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityID.m; sourceTree = "<group>"; };
+		198AF9E211CFCE8400719B2B /* EntityInformationFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityInformationFamilyPdu.h; sourceTree = "<group>"; };
+		198AF9E311CFCE8400719B2B /* EntityInformationFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityInformationFamilyPdu.m; sourceTree = "<group>"; };
+		198AF9E411CFCE8400719B2B /* EntityManagementFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityManagementFamilyPdu.h; sourceTree = "<group>"; };
+		198AF9E511CFCE8400719B2B /* EntityManagementFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityManagementFamilyPdu.m; sourceTree = "<group>"; };
+		198AF9E611CFCE8400719B2B /* EntityStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityStatePdu.h; sourceTree = "<group>"; };
+		198AF9E711CFCE8400719B2B /* EntityStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityStatePdu.m; sourceTree = "<group>"; };
+		198AF9E811CFCE8400719B2B /* EntityStateUpdatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityStateUpdatePdu.h; sourceTree = "<group>"; };
+		198AF9E911CFCE8400719B2B /* EntityStateUpdatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityStateUpdatePdu.m; sourceTree = "<group>"; };
+		198AF9EA11CFCE8400719B2B /* EntityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityType.h; sourceTree = "<group>"; };
+		198AF9EB11CFCE8400719B2B /* EntityType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityType.m; sourceTree = "<group>"; };
+		198AF9EC11CFCE8400719B2B /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		198AF9ED11CFCE8400719B2B /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
+		198AF9EE11CFCE8400719B2B /* EnvironmentalProcessPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnvironmentalProcessPdu.h; sourceTree = "<group>"; };
+		198AF9EF11CFCE8400719B2B /* EnvironmentalProcessPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnvironmentalProcessPdu.m; sourceTree = "<group>"; };
+		198AF9F011CFCE8400719B2B /* EventID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventID.h; sourceTree = "<group>"; };
+		198AF9F111CFCE8400719B2B /* EventID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventID.m; sourceTree = "<group>"; };
+		198AF9F211CFCE8400719B2B /* EventReportPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventReportPdu.h; sourceTree = "<group>"; };
+		198AF9F311CFCE8400719B2B /* EventReportPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventReportPdu.m; sourceTree = "<group>"; };
+		198AF9F411CFCE8400719B2B /* EventReportReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventReportReliablePdu.h; sourceTree = "<group>"; };
+		198AF9F511CFCE8400719B2B /* EventReportReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventReportReliablePdu.m; sourceTree = "<group>"; };
+		198AF9F611CFCE8400719B2B /* FastEntityStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastEntityStatePdu.h; sourceTree = "<group>"; };
+		198AF9F711CFCE8400719B2B /* FastEntityStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastEntityStatePdu.m; sourceTree = "<group>"; };
+		198AF9F811CFCE8400719B2B /* FirePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirePdu.h; sourceTree = "<group>"; };
+		198AF9F911CFCE8400719B2B /* FirePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirePdu.m; sourceTree = "<group>"; };
+		198AF9FA11CFCE8400719B2B /* FixedDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedDatum.h; sourceTree = "<group>"; };
+		198AF9FB11CFCE8400719B2B /* FixedDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FixedDatum.m; sourceTree = "<group>"; };
+		198AF9FC11CFCE8400719B2B /* FourByteChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourByteChunk.h; sourceTree = "<group>"; };
+		198AF9FD11CFCE8400719B2B /* FourByteChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourByteChunk.m; sourceTree = "<group>"; };
+		198AF9FE11CFCE8400719B2B /* FundamentalParameterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundamentalParameterData.h; sourceTree = "<group>"; };
+		198AF9FF11CFCE8400719B2B /* FundamentalParameterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundamentalParameterData.m; sourceTree = "<group>"; };
+		198AFA0011CFCE8400719B2B /* FundamentalParameterDataIff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundamentalParameterDataIff.h; sourceTree = "<group>"; };
+		198AFA0111CFCE8400719B2B /* FundamentalParameterDataIff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundamentalParameterDataIff.m; sourceTree = "<group>"; };
+		198AFA0211CFCE8400719B2B /* GridAxisRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridAxisRecord.h; sourceTree = "<group>"; };
+		198AFA0311CFCE8400719B2B /* GridAxisRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridAxisRecord.m; sourceTree = "<group>"; };
+		198AFA0411CFCE8400719B2B /* GridAxisRecordRepresentation0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridAxisRecordRepresentation0.h; sourceTree = "<group>"; };
+		198AFA0511CFCE8400719B2B /* GridAxisRecordRepresentation0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridAxisRecordRepresentation0.m; sourceTree = "<group>"; };
+		198AFA0611CFCE8400719B2B /* GridAxisRecordRepresentation1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridAxisRecordRepresentation1.h; sourceTree = "<group>"; };
+		198AFA0711CFCE8400719B2B /* GridAxisRecordRepresentation1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridAxisRecordRepresentation1.m; sourceTree = "<group>"; };
+		198AFA0811CFCE8400719B2B /* GridAxisRecordRepresentation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridAxisRecordRepresentation2.h; sourceTree = "<group>"; };
+		198AFA0911CFCE8400719B2B /* GridAxisRecordRepresentation2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridAxisRecordRepresentation2.m; sourceTree = "<group>"; };
+		198AFA0A11CFCE8400719B2B /* GriddedDataPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GriddedDataPdu.h; sourceTree = "<group>"; };
+		198AFA0B11CFCE8400719B2B /* GriddedDataPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GriddedDataPdu.m; sourceTree = "<group>"; };
+		198AFA0C11CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IffAtcNavAidsLayer1Pdu.h; sourceTree = "<group>"; };
+		198AFA0D11CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IffAtcNavAidsLayer1Pdu.m; sourceTree = "<group>"; };
+		198AFA0E11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IffAtcNavAidsLayer2Pdu.h; sourceTree = "<group>"; };
+		198AFA0F11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IffAtcNavAidsLayer2Pdu.m; sourceTree = "<group>"; };
+		198AFA1011CFCE8400719B2B /* IffFundamentalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IffFundamentalData.h; sourceTree = "<group>"; };
+		198AFA1111CFCE8400719B2B /* IffFundamentalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IffFundamentalData.m; sourceTree = "<group>"; };
+		198AFA1211CFCE8400719B2B /* IntercomCommunicationsParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercomCommunicationsParameters.h; sourceTree = "<group>"; };
+		198AFA1311CFCE8400719B2B /* IntercomCommunicationsParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomCommunicationsParameters.m; sourceTree = "<group>"; };
+		198AFA1411CFCE8400719B2B /* IntercomControlPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercomControlPdu.h; sourceTree = "<group>"; };
+		198AFA1511CFCE8400719B2B /* IntercomControlPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomControlPdu.m; sourceTree = "<group>"; };
+		198AFA1611CFCE8400719B2B /* IntercomSignalPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercomSignalPdu.h; sourceTree = "<group>"; };
+		198AFA1711CFCE8400719B2B /* IntercomSignalPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomSignalPdu.m; sourceTree = "<group>"; };
+		198AFA1811CFCE8400719B2B /* IsGroupOfPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsGroupOfPdu.h; sourceTree = "<group>"; };
+		198AFA1911CFCE8400719B2B /* IsGroupOfPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsGroupOfPdu.m; sourceTree = "<group>"; };
+		198AFA1A11CFCE8400719B2B /* IsPartOfPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsPartOfPdu.h; sourceTree = "<group>"; };
+		198AFA1B11CFCE8400719B2B /* IsPartOfPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsPartOfPdu.m; sourceTree = "<group>"; };
+		198AFA1C11CFCE8400719B2B /* LayerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerHeader.h; sourceTree = "<group>"; };
+		198AFA1D11CFCE8400719B2B /* LayerHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerHeader.m; sourceTree = "<group>"; };
+		198AFA1E11CFCE8400719B2B /* LinearObjectStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearObjectStatePdu.h; sourceTree = "<group>"; };
+		198AFA1F11CFCE8400719B2B /* LinearObjectStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearObjectStatePdu.m; sourceTree = "<group>"; };
+		198AFA2011CFCE8400719B2B /* LinearSegmentParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearSegmentParameter.h; sourceTree = "<group>"; };
+		198AFA2111CFCE8400719B2B /* LinearSegmentParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearSegmentParameter.m; sourceTree = "<group>"; };
+		198AFA2211CFCE8400719B2B /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		198AFA2311CFCE8400719B2B /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		198AFA2411CFCE8400719B2B /* LogisticsFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogisticsFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA2511CFCE8400719B2B /* LogisticsFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogisticsFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA2611CFCE8400719B2B /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		198AFA2711CFCE8400719B2B /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
+		198AFA2811CFCE8400719B2B /* MapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewDelegate.h; sourceTree = "<group>"; };
+		198AFA2911CFCE8400719B2B /* MapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewDelegate.m; sourceTree = "<group>"; };
+		198AFA2A11CFCE8400719B2B /* Marking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marking.h; sourceTree = "<group>"; };
+		198AFA2B11CFCE8400719B2B /* Marking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marking.m; sourceTree = "<group>"; };
+		198AFA2C11CFCE8400719B2B /* MinefieldDataPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinefieldDataPdu.h; sourceTree = "<group>"; };
+		198AFA2D11CFCE8400719B2B /* MinefieldDataPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinefieldDataPdu.m; sourceTree = "<group>"; };
+		198AFA2E11CFCE8400719B2B /* MinefieldFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinefieldFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA2F11CFCE8400719B2B /* MinefieldFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinefieldFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA3011CFCE8400719B2B /* MinefieldQueryPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinefieldQueryPdu.h; sourceTree = "<group>"; };
+		198AFA3111CFCE8400719B2B /* MinefieldQueryPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinefieldQueryPdu.m; sourceTree = "<group>"; };
+		198AFA3211CFCE8400719B2B /* MinefieldResponseNackPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinefieldResponseNackPdu.h; sourceTree = "<group>"; };
+		198AFA3311CFCE8400719B2B /* MinefieldResponseNackPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinefieldResponseNackPdu.m; sourceTree = "<group>"; };
+		198AFA3411CFCE8400719B2B /* MinefieldStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinefieldStatePdu.h; sourceTree = "<group>"; };
+		198AFA3511CFCE8400719B2B /* MinefieldStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinefieldStatePdu.m; sourceTree = "<group>"; };
+		198AFA3611CFCE8400719B2B /* ModulationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulationType.h; sourceTree = "<group>"; };
+		198AFA3711CFCE8400719B2B /* ModulationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulationType.m; sourceTree = "<group>"; };
+		198AFA3811CFCE8400719B2B /* NamedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamedLocation.h; sourceTree = "<group>"; };
+		198AFA3911CFCE8400719B2B /* NamedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamedLocation.m; sourceTree = "<group>"; };
+		198AFA3A11CFCE8400719B2B /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		198AFA3B11CFCE8400719B2B /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		198AFA3C11CFCE8400719B2B /* NPSAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPSAnnotationView.h; sourceTree = "<group>"; };
+		198AFA3D11CFCE8400719B2B /* NPSAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPSAnnotationView.m; sourceTree = "<group>"; };
+		198AFA3E11CFCE8400719B2B /* ObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectType.h; sourceTree = "<group>"; };
+		198AFA3F11CFCE8400719B2B /* ObjectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectType.m; sourceTree = "<group>"; };
+		198AFA4011CFCE8400719B2B /* OneByteChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneByteChunk.h; sourceTree = "<group>"; };
+		198AFA4111CFCE8400719B2B /* OneByteChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneByteChunk.m; sourceTree = "<group>"; };
+		198AFA4211CFCE8400719B2B /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
+		198AFA4311CFCE8400719B2B /* Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Orientation.m; sourceTree = "<group>"; };
+		198AFA4411CFCE8400719B2B /* Pdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pdu.h; sourceTree = "<group>"; };
+		198AFA4511CFCE8400719B2B /* Pdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pdu.m; sourceTree = "<group>"; };
+		198AFA4611CFCE8400719B2B /* PduContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PduContainer.h; sourceTree = "<group>"; };
+		198AFA4711CFCE8400719B2B /* PduContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PduContainer.m; sourceTree = "<group>"; };
+		198AFA4811CFCE8400719B2B /* PduDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PduDispatcher.h; sourceTree = "<group>"; };
+		198AFA4911CFCE8400719B2B /* PduDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PduDispatcher.m; sourceTree = "<group>"; };
+		198AFA4A11CFCE8400719B2B /* PduFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PduFactory.h; sourceTree = "<group>"; };
+		198AFA4B11CFCE8400719B2B /* PduFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PduFactory.m; sourceTree = "<group>"; };
+		198AFA4C11CFCE8400719B2B /* PduReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PduReceiverProtocol.h; sourceTree = "<group>"; };
+		198AFA4D11CFCE8400719B2B /* PointObjectStatePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointObjectStatePdu.h; sourceTree = "<group>"; };
+		198AFA4E11CFCE8400719B2B /* PointObjectStatePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointObjectStatePdu.m; sourceTree = "<group>"; };
+		198AFA4F11CFCE8400719B2B /* PropulsionSystemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropulsionSystemData.h; sourceTree = "<group>"; };
+		198AFA5011CFCE8400719B2B /* PropulsionSystemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropulsionSystemData.m; sourceTree = "<group>"; };
+		198AFA5111CFCE8400719B2B /* RadioCommunicationsFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCommunicationsFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA5211CFCE8400719B2B /* RadioCommunicationsFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCommunicationsFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA5311CFCE8400719B2B /* RadioEntityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioEntityType.h; sourceTree = "<group>"; };
+		198AFA5411CFCE8400719B2B /* RadioEntityType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioEntityType.m; sourceTree = "<group>"; };
+		198AFA5511CFCE8400719B2B /* ReceiverPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiverPdu.h; sourceTree = "<group>"; };
+		198AFA5611CFCE8400719B2B /* ReceiverPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiverPdu.m; sourceTree = "<group>"; };
+		198AFA5711CFCE8400719B2B /* RecordQueryReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordQueryReliablePdu.h; sourceTree = "<group>"; };
+		198AFA5811CFCE8400719B2B /* RecordQueryReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordQueryReliablePdu.m; sourceTree = "<group>"; };
+		198AFA5911CFCE8400719B2B /* RecordSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSet.h; sourceTree = "<group>"; };
+		198AFA5A11CFCE8400719B2B /* RecordSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSet.m; sourceTree = "<group>"; };
+		198AFA5B11CFCE8400719B2B /* Relationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Relationship.h; sourceTree = "<group>"; };
+		198AFA5C11CFCE8400719B2B /* Relationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Relationship.m; sourceTree = "<group>"; };
+		198AFA5D11CFCE8400719B2B /* RemoveEntityPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveEntityPdu.h; sourceTree = "<group>"; };
+		198AFA5E11CFCE8400719B2B /* RemoveEntityPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveEntityPdu.m; sourceTree = "<group>"; };
+		198AFA5F11CFCE8400719B2B /* RemoveEntityReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveEntityReliablePdu.h; sourceTree = "<group>"; };
+		198AFA6011CFCE8400719B2B /* RemoveEntityReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveEntityReliablePdu.m; sourceTree = "<group>"; };
+		198AFA6111CFCE8400719B2B /* RepairCompletePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairCompletePdu.h; sourceTree = "<group>"; };
+		198AFA6211CFCE8400719B2B /* RepairCompletePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairCompletePdu.m; sourceTree = "<group>"; };
+		198AFA6311CFCE8400719B2B /* RepairResponsePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairResponsePdu.h; sourceTree = "<group>"; };
+		198AFA6411CFCE8400719B2B /* RepairResponsePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairResponsePdu.m; sourceTree = "<group>"; };
+		198AFA6511CFCE8400719B2B /* ResupplyCancelPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResupplyCancelPdu.h; sourceTree = "<group>"; };
+		198AFA6611CFCE8400719B2B /* ResupplyCancelPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResupplyCancelPdu.m; sourceTree = "<group>"; };
+		198AFA6711CFCE8400719B2B /* ResupplyOfferPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResupplyOfferPdu.h; sourceTree = "<group>"; };
+		198AFA6811CFCE8400719B2B /* ResupplyOfferPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResupplyOfferPdu.m; sourceTree = "<group>"; };
+		198AFA6911CFCE8400719B2B /* ResupplyReceivedPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResupplyReceivedPdu.h; sourceTree = "<group>"; };
+		198AFA6A11CFCE8400719B2B /* ResupplyReceivedPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResupplyReceivedPdu.m; sourceTree = "<group>"; };
+		198AFA6B11CFCE8400719B2B /* SeesPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeesPdu.h; sourceTree = "<group>"; };
+		198AFA6C11CFCE8400719B2B /* SeesPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeesPdu.m; sourceTree = "<group>"; };
+		198AFA6D11CFCE8400719B2B /* ServiceRequestPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequestPdu.h; sourceTree = "<group>"; };
+		198AFA6E11CFCE8400719B2B /* ServiceRequestPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRequestPdu.m; sourceTree = "<group>"; };
+		198AFA6F11CFCE8400719B2B /* SetDataPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDataPdu.h; sourceTree = "<group>"; };
+		198AFA7011CFCE8400719B2B /* SetDataPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDataPdu.m; sourceTree = "<group>"; };
+		198AFA7111CFCE8400719B2B /* SetDataReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetDataReliablePdu.h; sourceTree = "<group>"; };
+		198AFA7211CFCE8400719B2B /* SetDataReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetDataReliablePdu.m; sourceTree = "<group>"; };
+		198AFA7311CFCE8400719B2B /* SetRecordReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetRecordReliablePdu.h; sourceTree = "<group>"; };
+		198AFA7411CFCE8400719B2B /* SetRecordReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetRecordReliablePdu.m; sourceTree = "<group>"; };
+		198AFA7511CFCE8400719B2B /* ShaftRPMs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaftRPMs.h; sourceTree = "<group>"; };
+		198AFA7611CFCE8400719B2B /* ShaftRPMs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaftRPMs.m; sourceTree = "<group>"; };
+		198AFA7711CFCE8400719B2B /* SignalPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalPdu.h; sourceTree = "<group>"; };
+		198AFA7811CFCE8400719B2B /* SignalPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignalPdu.m; sourceTree = "<group>"; };
+		198AFA7911CFCE8400719B2B /* SimulationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationAddress.h; sourceTree = "<group>"; };
+		198AFA7A11CFCE8400719B2B /* SimulationAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationAddress.m; sourceTree = "<group>"; };
+		198AFA7B11CFCE8400719B2B /* SimulationManagementFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationManagementFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA7C11CFCE8400719B2B /* SimulationManagementFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationManagementFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA7D11CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationManagementWithReliabilityFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA7E11CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationManagementWithReliabilityFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA7F11CFCE8400719B2B /* SixByteChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SixByteChunk.h; sourceTree = "<group>"; };
+		198AFA8011CFCE8400719B2B /* SixByteChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SixByteChunk.m; sourceTree = "<group>"; };
+		198AFA8111CFCE8400719B2B /* SphericalHarmonicAntennaPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphericalHarmonicAntennaPattern.h; sourceTree = "<group>"; };
+		198AFA8211CFCE8400719B2B /* SphericalHarmonicAntennaPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphericalHarmonicAntennaPattern.m; sourceTree = "<group>"; };
+		198AFA8311CFCE8400719B2B /* StartResumePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartResumePdu.h; sourceTree = "<group>"; };
+		198AFA8411CFCE8400719B2B /* StartResumePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartResumePdu.m; sourceTree = "<group>"; };
+		198AFA8511CFCE8400719B2B /* StartResumeReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartResumeReliablePdu.h; sourceTree = "<group>"; };
+		198AFA8611CFCE8400719B2B /* StartResumeReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartResumeReliablePdu.m; sourceTree = "<group>"; };
+		198AFA8711CFCE8400719B2B /* StopFreezePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopFreezePdu.h; sourceTree = "<group>"; };
+		198AFA8811CFCE8400719B2B /* StopFreezePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopFreezePdu.m; sourceTree = "<group>"; };
+		198AFA8911CFCE8400719B2B /* StopFreezeReliablePdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopFreezeReliablePdu.h; sourceTree = "<group>"; };
+		198AFA8A11CFCE8400719B2B /* StopFreezeReliablePdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopFreezeReliablePdu.m; sourceTree = "<group>"; };
+		198AFA8B11CFCE8400719B2B /* SupplyQuantity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplyQuantity.h; sourceTree = "<group>"; };
+		198AFA8C11CFCE8400719B2B /* SupplyQuantity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplyQuantity.m; sourceTree = "<group>"; };
+		198AFA8D11CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntheticEnvironmentFamilyPdu.h; sourceTree = "<group>"; };
+		198AFA8E11CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntheticEnvironmentFamilyPdu.m; sourceTree = "<group>"; };
+		198AFA8F11CFCE8400719B2B /* SystemID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemID.h; sourceTree = "<group>"; };
+		198AFA9011CFCE8400719B2B /* SystemID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemID.m; sourceTree = "<group>"; };
+		198AFA9111CFCE8400719B2B /* TrackJamTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackJamTarget.h; sourceTree = "<group>"; };
+		198AFA9211CFCE8400719B2B /* TrackJamTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackJamTarget.m; sourceTree = "<group>"; };
+		198AFA9311CFCE8400719B2B /* TransferControlRequestPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferControlRequestPdu.h; sourceTree = "<group>"; };
+		198AFA9411CFCE8400719B2B /* TransferControlRequestPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferControlRequestPdu.m; sourceTree = "<group>"; };
+		198AFA9511CFCE8400719B2B /* TransmitterPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransmitterPdu.h; sourceTree = "<group>"; };
+		198AFA9611CFCE8400719B2B /* TransmitterPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitterPdu.m; sourceTree = "<group>"; };
+		198AFA9711CFCE8400719B2B /* TwoByteChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoByteChunk.h; sourceTree = "<group>"; };
+		198AFA9811CFCE8400719B2B /* TwoByteChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoByteChunk.m; sourceTree = "<group>"; };
+		198AFA9911CFCE8400719B2B /* UaPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UaPdu.h; sourceTree = "<group>"; };
+		198AFA9A11CFCE8400719B2B /* UaPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UaPdu.m; sourceTree = "<group>"; };
+		198AFA9B11CFCE8400719B2B /* VariableDatum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableDatum.h; sourceTree = "<group>"; };
+		198AFA9C11CFCE8400719B2B /* VariableDatum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableDatum.m; sourceTree = "<group>"; };
+		198AFA9D11CFCE8400719B2B /* Vector3Double.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3Double.h; sourceTree = "<group>"; };
+		198AFA9E11CFCE8400719B2B /* Vector3Double.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector3Double.m; sourceTree = "<group>"; };
+		198AFA9F11CFCE8400719B2B /* Vector3Float.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3Float.h; sourceTree = "<group>"; };
+		198AFAA011CFCE8400719B2B /* Vector3Float.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector3Float.m; sourceTree = "<group>"; };
+		198AFAA111CFCE8400719B2B /* VectoringNozzleSystemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectoringNozzleSystemData.h; sourceTree = "<group>"; };
+		198AFAA211CFCE8400719B2B /* VectoringNozzleSystemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VectoringNozzleSystemData.m; sourceTree = "<group>"; };
+		198AFAA311CFCE8400719B2B /* WarfareFamilyPdu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarfareFamilyPdu.h; sourceTree = "<group>"; };
+		198AFAA411CFCE8400719B2B /* WarfareFamilyPdu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarfareFamilyPdu.m; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* DisMapIpadAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisMapIpadAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* DisMapIpadAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisMapIpadAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* DisMapIpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisMapIpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* DisMapIpadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisMapIpadViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* DisMapIpadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisMapIpadViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* DisMapIpadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisMapIpadViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* DisMapIpad_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisMapIpad_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* DisMapIpad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DisMapIpad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				198AF95811CC34EF00719B2B /* MapKit.framework in Frameworks */,
+				198AF97011CC35AA00719B2B /* CoreLocation.framework in Frameworks */,
+				198AF97411CC35C100719B2B /* CFNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				198AF97F11CFCC8D00719B2B /* DIS */,
+				1D3623240D0F684500981E51 /* DisMapIpadAppDelegate.h */,
+				1D3623250D0F684500981E51 /* DisMapIpadAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* DisMapIpadViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* DisMapIpadViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		198AF97F11CFCC8D00719B2B /* DIS */ = {
+			isa = PBXGroup;
+			children = (
+				198AF98411CFCE8400719B2B /* AcknowledgePdu.h */,
+				198AF98511CFCE8400719B2B /* AcknowledgePdu.m */,
+				198AF98611CFCE8400719B2B /* AcknowledgeReliablePdu.h */,
+				198AF98711CFCE8400719B2B /* AcknowledgeReliablePdu.m */,
+				198AF98811CFCE8400719B2B /* AcousticBeamData.h */,
+				198AF98911CFCE8400719B2B /* AcousticBeamData.m */,
+				198AF98A11CFCE8400719B2B /* AcousticBeamFundamentalParameter.h */,
+				198AF98B11CFCE8400719B2B /* AcousticBeamFundamentalParameter.m */,
+				198AF98C11CFCE8400719B2B /* AcousticEmitter.h */,
+				198AF98D11CFCE8400719B2B /* AcousticEmitter.m */,
+				198AF98E11CFCE8400719B2B /* AcousticEmitterSystem.h */,
+				198AF98F11CFCE8400719B2B /* AcousticEmitterSystem.m */,
+				198AF99011CFCE8400719B2B /* AcousticEmitterSystemData.h */,
+				198AF99111CFCE8400719B2B /* AcousticEmitterSystemData.m */,
+				198AF99211CFCE8400719B2B /* ActionRequestPdu.h */,
+				198AF99311CFCE8400719B2B /* ActionRequestPdu.m */,
+				198AF99411CFCE8400719B2B /* ActionRequestReliablePdu.h */,
+				198AF99511CFCE8400719B2B /* ActionRequestReliablePdu.m */,
+				198AF99611CFCE8400719B2B /* ActionResponsePdu.h */,
+				198AF99711CFCE8400719B2B /* ActionResponsePdu.m */,
+				198AF99811CFCE8400719B2B /* ActionResponseReliablePdu.h */,
+				198AF99911CFCE8400719B2B /* ActionResponseReliablePdu.m */,
+				198AF99A11CFCE8400719B2B /* AggregateID.h */,
+				198AF99B11CFCE8400719B2B /* AggregateID.m */,
+				198AF99C11CFCE8400719B2B /* AggregateMarking.h */,
+				198AF99D11CFCE8400719B2B /* AggregateMarking.m */,
+				198AF99E11CFCE8400719B2B /* AggregateStatePdu.h */,
+				198AF99F11CFCE8400719B2B /* AggregateStatePdu.m */,
+				198AF9A011CFCE8400719B2B /* AggregateType.h */,
+				198AF9A111CFCE8400719B2B /* AggregateType.m */,
+				198AF9A211CFCE8400719B2B /* AngularVelocityVector.h */,
+				198AF9A311CFCE8400719B2B /* AngularVelocityVector.m */,
+				198AF9A411CFCE8400719B2B /* AntennaLocation.h */,
+				198AF9A511CFCE8400719B2B /* AntennaLocation.m */,
+				198AF9A611CFCE8400719B2B /* ApaData.h */,
+				198AF9A711CFCE8400719B2B /* ApaData.m */,
+				198AF9A811CFCE8400719B2B /* ArealObjectStatePdu.h */,
+				198AF9A911CFCE8400719B2B /* ArealObjectStatePdu.m */,
+				198AF9AA11CFCE8400719B2B /* ArticulationParameter.h */,
+				198AF9AB11CFCE8400719B2B /* ArticulationParameter.m */,
+				198AF9AC11CFCE8400719B2B /* BeamAntennaPattern.h */,
+				198AF9AD11CFCE8400719B2B /* BeamAntennaPattern.m */,
+				198AF9AE11CFCE8400719B2B /* BeamData.h */,
+				198AF9AF11CFCE8400719B2B /* BeamData.m */,
+				198AF9B011CFCE8400719B2B /* BurstDescriptor.h */,
+				198AF9B111CFCE8400719B2B /* BurstDescriptor.m */,
+				198AF9B211CFCE8400719B2B /* ClockTime.h */,
+				198AF9B311CFCE8400719B2B /* ClockTime.m */,
+				198AF9B411CFCE8400719B2B /* CollisionElasticPdu.h */,
+				198AF9B511CFCE8400719B2B /* CollisionElasticPdu.m */,
+				198AF9B611CFCE8400719B2B /* CollisionPdu.h */,
+				198AF9B711CFCE8400719B2B /* CollisionPdu.m */,
+				198AF9B811CFCE8400719B2B /* CommentPdu.h */,
+				198AF9B911CFCE8400719B2B /* CommentPdu.m */,
+				198AF9BA11CFCE8400719B2B /* CommentReliablePdu.h */,
+				198AF9BB11CFCE8400719B2B /* CommentReliablePdu.m */,
+				198AF9BC11CFCE8400719B2B /* CreateEntityPdu.h */,
+				198AF9BD11CFCE8400719B2B /* CreateEntityPdu.m */,
+				198AF9BE11CFCE8400719B2B /* CreateEntityReliablePdu.h */,
+				198AF9BF11CFCE8400719B2B /* CreateEntityReliablePdu.m */,
+				198AF9C011CFCE8400719B2B /* DataInput.h */,
+				198AF9C111CFCE8400719B2B /* DataInput.m */,
+				198AF9C211CFCE8400719B2B /* DataOutput.h */,
+				198AF9C311CFCE8400719B2B /* DataOutput.m */,
+				198AF9C411CFCE8400719B2B /* DataPdu.h */,
+				198AF9C511CFCE8400719B2B /* DataPdu.m */,
+				198AF9C611CFCE8400719B2B /* DataQueryPdu.h */,
+				198AF9C711CFCE8400719B2B /* DataQueryPdu.m */,
+				198AF9C811CFCE8400719B2B /* DataQueryReliablePdu.h */,
+				198AF9C911CFCE8400719B2B /* DataQueryReliablePdu.m */,
+				198AF9CA11CFCE8400719B2B /* DataReliablePdu.h */,
+				198AF9CB11CFCE8400719B2B /* DataReliablePdu.m */,
+				198AF9CC11CFCE8400719B2B /* DeadReckoningParameter.h */,
+				198AF9CD11CFCE8400719B2B /* DeadReckoningParameter.m */,
+				198AF9CE11CFCE8400719B2B /* DesignatorPdu.h */,
+				198AF9CF11CFCE8400719B2B /* DesignatorPdu.m */,
+				198AF9D011CFCE8400719B2B /* DetonationPdu.h */,
+				198AF9D111CFCE8400719B2B /* DetonationPdu.m */,
+				198AF9D211CFCE8400719B2B /* DisPoint.h */,
+				198AF9D311CFCE8400719B2B /* DisPoint.m */,
+				198AF9D411CFCE8400719B2B /* DistributedEmissionsFamilyPdu.h */,
+				198AF9D511CFCE8400719B2B /* DistributedEmissionsFamilyPdu.m */,
+				198AF9D611CFCE8400719B2B /* EightByteChunk.h */,
+				198AF9D711CFCE8400719B2B /* EightByteChunk.m */,
+				198AF9D811CFCE8400719B2B /* ElectronicEmissionBeamData.h */,
+				198AF9D911CFCE8400719B2B /* ElectronicEmissionBeamData.m */,
+				198AF9DA11CFCE8400719B2B /* ElectronicEmissionsPdu.h */,
+				198AF9DB11CFCE8400719B2B /* ElectronicEmissionsPdu.m */,
+				198AF9DC11CFCE8400719B2B /* ElectronicEmissionSystemData.h */,
+				198AF9DD11CFCE8400719B2B /* ElectronicEmissionSystemData.m */,
+				198AF9DE11CFCE8400719B2B /* EmitterSystem.h */,
+				198AF9DF11CFCE8400719B2B /* EmitterSystem.m */,
+				198AF9E011CFCE8400719B2B /* EntityID.h */,
+				198AF9E111CFCE8400719B2B /* EntityID.m */,
+				198AF9E211CFCE8400719B2B /* EntityInformationFamilyPdu.h */,
+				198AF9E311CFCE8400719B2B /* EntityInformationFamilyPdu.m */,
+				198AF9E411CFCE8400719B2B /* EntityManagementFamilyPdu.h */,
+				198AF9E511CFCE8400719B2B /* EntityManagementFamilyPdu.m */,
+				198AF9E611CFCE8400719B2B /* EntityStatePdu.h */,
+				198AF9E711CFCE8400719B2B /* EntityStatePdu.m */,
+				198AF9E811CFCE8400719B2B /* EntityStateUpdatePdu.h */,
+				198AF9E911CFCE8400719B2B /* EntityStateUpdatePdu.m */,
+				198AF9EA11CFCE8400719B2B /* EntityType.h */,
+				198AF9EB11CFCE8400719B2B /* EntityType.m */,
+				198AF9EC11CFCE8400719B2B /* Environment.h */,
+				198AF9ED11CFCE8400719B2B /* Environment.m */,
+				198AF9EE11CFCE8400719B2B /* EnvironmentalProcessPdu.h */,
+				198AF9EF11CFCE8400719B2B /* EnvironmentalProcessPdu.m */,
+				198AF9F011CFCE8400719B2B /* EventID.h */,
+				198AF9F111CFCE8400719B2B /* EventID.m */,
+				198AF9F211CFCE8400719B2B /* EventReportPdu.h */,
+				198AF9F311CFCE8400719B2B /* EventReportPdu.m */,
+				198AF9F411CFCE8400719B2B /* EventReportReliablePdu.h */,
+				198AF9F511CFCE8400719B2B /* EventReportReliablePdu.m */,
+				198AF9F611CFCE8400719B2B /* FastEntityStatePdu.h */,
+				198AF9F711CFCE8400719B2B /* FastEntityStatePdu.m */,
+				198AF9F811CFCE8400719B2B /* FirePdu.h */,
+				198AF9F911CFCE8400719B2B /* FirePdu.m */,
+				198AF9FA11CFCE8400719B2B /* FixedDatum.h */,
+				198AF9FB11CFCE8400719B2B /* FixedDatum.m */,
+				198AF9FC11CFCE8400719B2B /* FourByteChunk.h */,
+				198AF9FD11CFCE8400719B2B /* FourByteChunk.m */,
+				198AF9FE11CFCE8400719B2B /* FundamentalParameterData.h */,
+				198AF9FF11CFCE8400719B2B /* FundamentalParameterData.m */,
+				198AFA0011CFCE8400719B2B /* FundamentalParameterDataIff.h */,
+				198AFA0111CFCE8400719B2B /* FundamentalParameterDataIff.m */,
+				198AFA0211CFCE8400719B2B /* GridAxisRecord.h */,
+				198AFA0311CFCE8400719B2B /* GridAxisRecord.m */,
+				198AFA0411CFCE8400719B2B /* GridAxisRecordRepresentation0.h */,
+				198AFA0511CFCE8400719B2B /* GridAxisRecordRepresentation0.m */,
+				198AFA0611CFCE8400719B2B /* GridAxisRecordRepresentation1.h */,
+				198AFA0711CFCE8400719B2B /* GridAxisRecordRepresentation1.m */,
+				198AFA0811CFCE8400719B2B /* GridAxisRecordRepresentation2.h */,
+				198AFA0911CFCE8400719B2B /* GridAxisRecordRepresentation2.m */,
+				198AFA0A11CFCE8400719B2B /* GriddedDataPdu.h */,
+				198AFA0B11CFCE8400719B2B /* GriddedDataPdu.m */,
+				198AFA0C11CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.h */,
+				198AFA0D11CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.m */,
+				198AFA0E11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.h */,
+				198AFA0F11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.m */,
+				198AFA1011CFCE8400719B2B /* IffFundamentalData.h */,
+				198AFA1111CFCE8400719B2B /* IffFundamentalData.m */,
+				198AFA1211CFCE8400719B2B /* IntercomCommunicationsParameters.h */,
+				198AFA1311CFCE8400719B2B /* IntercomCommunicationsParameters.m */,
+				198AFA1411CFCE8400719B2B /* IntercomControlPdu.h */,
+				198AFA1511CFCE8400719B2B /* IntercomControlPdu.m */,
+				198AFA1611CFCE8400719B2B /* IntercomSignalPdu.h */,
+				198AFA1711CFCE8400719B2B /* IntercomSignalPdu.m */,
+				198AFA1811CFCE8400719B2B /* IsGroupOfPdu.h */,
+				198AFA1911CFCE8400719B2B /* IsGroupOfPdu.m */,
+				198AFA1A11CFCE8400719B2B /* IsPartOfPdu.h */,
+				198AFA1B11CFCE8400719B2B /* IsPartOfPdu.m */,
+				198AFA1C11CFCE8400719B2B /* LayerHeader.h */,
+				198AFA1D11CFCE8400719B2B /* LayerHeader.m */,
+				198AFA1E11CFCE8400719B2B /* LinearObjectStatePdu.h */,
+				198AFA1F11CFCE8400719B2B /* LinearObjectStatePdu.m */,
+				198AFA2011CFCE8400719B2B /* LinearSegmentParameter.h */,
+				198AFA2111CFCE8400719B2B /* LinearSegmentParameter.m */,
+				198AFA2211CFCE8400719B2B /* Location.h */,
+				198AFA2311CFCE8400719B2B /* Location.m */,
+				198AFA2411CFCE8400719B2B /* LogisticsFamilyPdu.h */,
+				198AFA2511CFCE8400719B2B /* LogisticsFamilyPdu.m */,
+				198AFA2611CFCE8400719B2B /* MapAnnotation.h */,
+				198AFA2711CFCE8400719B2B /* MapAnnotation.m */,
+				198AFA2811CFCE8400719B2B /* MapViewDelegate.h */,
+				198AFA2911CFCE8400719B2B /* MapViewDelegate.m */,
+				198AFA2A11CFCE8400719B2B /* Marking.h */,
+				198AFA2B11CFCE8400719B2B /* Marking.m */,
+				198AFA2C11CFCE8400719B2B /* MinefieldDataPdu.h */,
+				198AFA2D11CFCE8400719B2B /* MinefieldDataPdu.m */,
+				198AFA2E11CFCE8400719B2B /* MinefieldFamilyPdu.h */,
+				198AFA2F11CFCE8400719B2B /* MinefieldFamilyPdu.m */,
+				198AFA3011CFCE8400719B2B /* MinefieldQueryPdu.h */,
+				198AFA3111CFCE8400719B2B /* MinefieldQueryPdu.m */,
+				198AFA3211CFCE8400719B2B /* MinefieldResponseNackPdu.h */,
+				198AFA3311CFCE8400719B2B /* MinefieldResponseNackPdu.m */,
+				198AFA3411CFCE8400719B2B /* MinefieldStatePdu.h */,
+				198AFA3511CFCE8400719B2B /* MinefieldStatePdu.m */,
+				198AFA3611CFCE8400719B2B /* ModulationType.h */,
+				198AFA3711CFCE8400719B2B /* ModulationType.m */,
+				198AFA3811CFCE8400719B2B /* NamedLocation.h */,
+				198AFA3911CFCE8400719B2B /* NamedLocation.m */,
+				198AFA3A11CFCE8400719B2B /* Network.h */,
+				198AFA3B11CFCE8400719B2B /* Network.m */,
+				198AFA3C11CFCE8400719B2B /* NPSAnnotationView.h */,
+				198AFA3D11CFCE8400719B2B /* NPSAnnotationView.m */,
+				198AFA3E11CFCE8400719B2B /* ObjectType.h */,
+				198AFA3F11CFCE8400719B2B /* ObjectType.m */,
+				198AFA4011CFCE8400719B2B /* OneByteChunk.h */,
+				198AFA4111CFCE8400719B2B /* OneByteChunk.m */,
+				198AFA4211CFCE8400719B2B /* Orientation.h */,
+				198AFA4311CFCE8400719B2B /* Orientation.m */,
+				198AFA4411CFCE8400719B2B /* Pdu.h */,
+				198AFA4511CFCE8400719B2B /* Pdu.m */,
+				198AFA4611CFCE8400719B2B /* PduContainer.h */,
+				198AFA4711CFCE8400719B2B /* PduContainer.m */,
+				198AFA4811CFCE8400719B2B /* PduDispatcher.h */,
+				198AFA4911CFCE8400719B2B /* PduDispatcher.m */,
+				198AFA4A11CFCE8400719B2B /* PduFactory.h */,
+				198AFA4B11CFCE8400719B2B /* PduFactory.m */,
+				198AFA4C11CFCE8400719B2B /* PduReceiverProtocol.h */,
+				198AFA4D11CFCE8400719B2B /* PointObjectStatePdu.h */,
+				198AFA4E11CFCE8400719B2B /* PointObjectStatePdu.m */,
+				198AFA4F11CFCE8400719B2B /* PropulsionSystemData.h */,
+				198AFA5011CFCE8400719B2B /* PropulsionSystemData.m */,
+				198AFA5111CFCE8400719B2B /* RadioCommunicationsFamilyPdu.h */,
+				198AFA5211CFCE8400719B2B /* RadioCommunicationsFamilyPdu.m */,
+				198AFA5311CFCE8400719B2B /* RadioEntityType.h */,
+				198AFA5411CFCE8400719B2B /* RadioEntityType.m */,
+				198AFA5511CFCE8400719B2B /* ReceiverPdu.h */,
+				198AFA5611CFCE8400719B2B /* ReceiverPdu.m */,
+				198AFA5711CFCE8400719B2B /* RecordQueryReliablePdu.h */,
+				198AFA5811CFCE8400719B2B /* RecordQueryReliablePdu.m */,
+				198AFA5911CFCE8400719B2B /* RecordSet.h */,
+				198AFA5A11CFCE8400719B2B /* RecordSet.m */,
+				198AFA5B11CFCE8400719B2B /* Relationship.h */,
+				198AFA5C11CFCE8400719B2B /* Relationship.m */,
+				198AFA5D11CFCE8400719B2B /* RemoveEntityPdu.h */,
+				198AFA5E11CFCE8400719B2B /* RemoveEntityPdu.m */,
+				198AFA5F11CFCE8400719B2B /* RemoveEntityReliablePdu.h */,
+				198AFA6011CFCE8400719B2B /* RemoveEntityReliablePdu.m */,
+				198AFA6111CFCE8400719B2B /* RepairCompletePdu.h */,
+				198AFA6211CFCE8400719B2B /* RepairCompletePdu.m */,
+				198AFA6311CFCE8400719B2B /* RepairResponsePdu.h */,
+				198AFA6411CFCE8400719B2B /* RepairResponsePdu.m */,
+				198AFA6511CFCE8400719B2B /* ResupplyCancelPdu.h */,
+				198AFA6611CFCE8400719B2B /* ResupplyCancelPdu.m */,
+				198AFA6711CFCE8400719B2B /* ResupplyOfferPdu.h */,
+				198AFA6811CFCE8400719B2B /* ResupplyOfferPdu.m */,
+				198AFA6911CFCE8400719B2B /* ResupplyReceivedPdu.h */,
+				198AFA6A11CFCE8400719B2B /* ResupplyReceivedPdu.m */,
+				198AFA6B11CFCE8400719B2B /* SeesPdu.h */,
+				198AFA6C11CFCE8400719B2B /* SeesPdu.m */,
+				198AFA6D11CFCE8400719B2B /* ServiceRequestPdu.h */,
+				198AFA6E11CFCE8400719B2B /* ServiceRequestPdu.m */,
+				198AFA6F11CFCE8400719B2B /* SetDataPdu.h */,
+				198AFA7011CFCE8400719B2B /* SetDataPdu.m */,
+				198AFA7111CFCE8400719B2B /* SetDataReliablePdu.h */,
+				198AFA7211CFCE8400719B2B /* SetDataReliablePdu.m */,
+				198AFA7311CFCE8400719B2B /* SetRecordReliablePdu.h */,
+				198AFA7411CFCE8400719B2B /* SetRecordReliablePdu.m */,
+				198AFA7511CFCE8400719B2B /* ShaftRPMs.h */,
+				198AFA7611CFCE8400719B2B /* ShaftRPMs.m */,
+				198AFA7711CFCE8400719B2B /* SignalPdu.h */,
+				198AFA7811CFCE8400719B2B /* SignalPdu.m */,
+				198AFA7911CFCE8400719B2B /* SimulationAddress.h */,
+				198AFA7A11CFCE8400719B2B /* SimulationAddress.m */,
+				198AFA7B11CFCE8400719B2B /* SimulationManagementFamilyPdu.h */,
+				198AFA7C11CFCE8400719B2B /* SimulationManagementFamilyPdu.m */,
+				198AFA7D11CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.h */,
+				198AFA7E11CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.m */,
+				198AFA7F11CFCE8400719B2B /* SixByteChunk.h */,
+				198AFA8011CFCE8400719B2B /* SixByteChunk.m */,
+				198AFA8111CFCE8400719B2B /* SphericalHarmonicAntennaPattern.h */,
+				198AFA8211CFCE8400719B2B /* SphericalHarmonicAntennaPattern.m */,
+				198AFA8311CFCE8400719B2B /* StartResumePdu.h */,
+				198AFA8411CFCE8400719B2B /* StartResumePdu.m */,
+				198AFA8511CFCE8400719B2B /* StartResumeReliablePdu.h */,
+				198AFA8611CFCE8400719B2B /* StartResumeReliablePdu.m */,
+				198AFA8711CFCE8400719B2B /* StopFreezePdu.h */,
+				198AFA8811CFCE8400719B2B /* StopFreezePdu.m */,
+				198AFA8911CFCE8400719B2B /* StopFreezeReliablePdu.h */,
+				198AFA8A11CFCE8400719B2B /* StopFreezeReliablePdu.m */,
+				198AFA8B11CFCE8400719B2B /* SupplyQuantity.h */,
+				198AFA8C11CFCE8400719B2B /* SupplyQuantity.m */,
+				198AFA8D11CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.h */,
+				198AFA8E11CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.m */,
+				198AFA8F11CFCE8400719B2B /* SystemID.h */,
+				198AFA9011CFCE8400719B2B /* SystemID.m */,
+				198AFA9111CFCE8400719B2B /* TrackJamTarget.h */,
+				198AFA9211CFCE8400719B2B /* TrackJamTarget.m */,
+				198AFA9311CFCE8400719B2B /* TransferControlRequestPdu.h */,
+				198AFA9411CFCE8400719B2B /* TransferControlRequestPdu.m */,
+				198AFA9511CFCE8400719B2B /* TransmitterPdu.h */,
+				198AFA9611CFCE8400719B2B /* TransmitterPdu.m */,
+				198AFA9711CFCE8400719B2B /* TwoByteChunk.h */,
+				198AFA9811CFCE8400719B2B /* TwoByteChunk.m */,
+				198AFA9911CFCE8400719B2B /* UaPdu.h */,
+				198AFA9A11CFCE8400719B2B /* UaPdu.m */,
+				198AFA9B11CFCE8400719B2B /* VariableDatum.h */,
+				198AFA9C11CFCE8400719B2B /* VariableDatum.m */,
+				198AFA9D11CFCE8400719B2B /* Vector3Double.h */,
+				198AFA9E11CFCE8400719B2B /* Vector3Double.m */,
+				198AFA9F11CFCE8400719B2B /* Vector3Float.h */,
+				198AFAA011CFCE8400719B2B /* Vector3Float.m */,
+				198AFAA111CFCE8400719B2B /* VectoringNozzleSystemData.h */,
+				198AFAA211CFCE8400719B2B /* VectoringNozzleSystemData.m */,
+				198AFAA311CFCE8400719B2B /* WarfareFamilyPdu.h */,
+				198AFAA411CFCE8400719B2B /* WarfareFamilyPdu.m */,
+				196C1DC111D2B04B00CB6A9F /* CoordinateTransform.h */,
+				196C1DC211D2B04B00CB6A9F /* CoordinateTransform.m */,
+			);
+			name = DIS;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* DisMapIpad.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* DisMapIpad_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				196C1E4E11D32C5000CB6A9F /* Settings.bundle */,
+				2899E5210DE3E06400AC0155 /* DisMapIpadViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* DisMapIpad-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				198AF95711CC34EF00719B2B /* MapKit.framework */,
+				198AF96F11CC35AA00719B2B /* CoreLocation.framework */,
+				198AF97311CC35C100719B2B /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* DisMapIpad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DisMapIpad" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DisMapIpad;
+			productName = DisMapIpad;
+			productReference = 1D6058910D05DD3D006BFB54 /* DisMapIpad.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DisMapIpad" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* DisMapIpad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* DisMapIpadViewController.xib in Resources */,
+				196C1E4F11D32C5000CB6A9F /* Settings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* DisMapIpadAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* DisMapIpadViewController.m in Sources */,
+				198AFAA511CFCE8400719B2B /* AcknowledgePdu.m in Sources */,
+				198AFAA611CFCE8400719B2B /* AcknowledgeReliablePdu.m in Sources */,
+				198AFAA711CFCE8400719B2B /* AcousticBeamData.m in Sources */,
+				198AFAA811CFCE8400719B2B /* AcousticBeamFundamentalParameter.m in Sources */,
+				198AFAA911CFCE8400719B2B /* AcousticEmitter.m in Sources */,
+				198AFAAA11CFCE8400719B2B /* AcousticEmitterSystem.m in Sources */,
+				198AFAAB11CFCE8400719B2B /* AcousticEmitterSystemData.m in Sources */,
+				198AFAAC11CFCE8400719B2B /* ActionRequestPdu.m in Sources */,
+				198AFAAD11CFCE8400719B2B /* ActionRequestReliablePdu.m in Sources */,
+				198AFAAE11CFCE8400719B2B /* ActionResponsePdu.m in Sources */,
+				198AFAAF11CFCE8400719B2B /* ActionResponseReliablePdu.m in Sources */,
+				198AFAB011CFCE8400719B2B /* AggregateID.m in Sources */,
+				198AFAB111CFCE8400719B2B /* AggregateMarking.m in Sources */,
+				198AFAB211CFCE8400719B2B /* AggregateStatePdu.m in Sources */,
+				198AFAB311CFCE8400719B2B /* AggregateType.m in Sources */,
+				198AFAB411CFCE8400719B2B /* AngularVelocityVector.m in Sources */,
+				198AFAB511CFCE8400719B2B /* AntennaLocation.m in Sources */,
+				198AFAB611CFCE8400719B2B /* ApaData.m in Sources */,
+				198AFAB711CFCE8400719B2B /* ArealObjectStatePdu.m in Sources */,
+				198AFAB811CFCE8400719B2B /* ArticulationParameter.m in Sources */,
+				198AFAB911CFCE8400719B2B /* BeamAntennaPattern.m in Sources */,
+				198AFABA11CFCE8400719B2B /* BeamData.m in Sources */,
+				198AFABB11CFCE8400719B2B /* BurstDescriptor.m in Sources */,
+				198AFABC11CFCE8400719B2B /* ClockTime.m in Sources */,
+				198AFABD11CFCE8400719B2B /* CollisionElasticPdu.m in Sources */,
+				198AFABE11CFCE8400719B2B /* CollisionPdu.m in Sources */,
+				198AFABF11CFCE8400719B2B /* CommentPdu.m in Sources */,
+				198AFAC011CFCE8400719B2B /* CommentReliablePdu.m in Sources */,
+				198AFAC111CFCE8400719B2B /* CreateEntityPdu.m in Sources */,
+				198AFAC211CFCE8400719B2B /* CreateEntityReliablePdu.m in Sources */,
+				198AFAC311CFCE8400719B2B /* DataInput.m in Sources */,
+				198AFAC411CFCE8400719B2B /* DataOutput.m in Sources */,
+				198AFAC511CFCE8400719B2B /* DataPdu.m in Sources */,
+				198AFAC611CFCE8400719B2B /* DataQueryPdu.m in Sources */,
+				198AFAC711CFCE8400719B2B /* DataQueryReliablePdu.m in Sources */,
+				198AFAC811CFCE8400719B2B /* DataReliablePdu.m in Sources */,
+				198AFAC911CFCE8400719B2B /* DeadReckoningParameter.m in Sources */,
+				198AFACA11CFCE8400719B2B /* DesignatorPdu.m in Sources */,
+				198AFACB11CFCE8400719B2B /* DetonationPdu.m in Sources */,
+				198AFACC11CFCE8400719B2B /* DisPoint.m in Sources */,
+				198AFACD11CFCE8400719B2B /* DistributedEmissionsFamilyPdu.m in Sources */,
+				198AFACE11CFCE8400719B2B /* EightByteChunk.m in Sources */,
+				198AFACF11CFCE8400719B2B /* ElectronicEmissionBeamData.m in Sources */,
+				198AFAD011CFCE8400719B2B /* ElectronicEmissionsPdu.m in Sources */,
+				198AFAD111CFCE8400719B2B /* ElectronicEmissionSystemData.m in Sources */,
+				198AFAD211CFCE8400719B2B /* EmitterSystem.m in Sources */,
+				198AFAD311CFCE8400719B2B /* EntityID.m in Sources */,
+				198AFAD411CFCE8400719B2B /* EntityInformationFamilyPdu.m in Sources */,
+				198AFAD511CFCE8400719B2B /* EntityManagementFamilyPdu.m in Sources */,
+				198AFAD611CFCE8400719B2B /* EntityStatePdu.m in Sources */,
+				198AFAD711CFCE8400719B2B /* EntityStateUpdatePdu.m in Sources */,
+				198AFAD811CFCE8400719B2B /* EntityType.m in Sources */,
+				198AFAD911CFCE8400719B2B /* Environment.m in Sources */,
+				198AFADA11CFCE8400719B2B /* EnvironmentalProcessPdu.m in Sources */,
+				198AFADB11CFCE8400719B2B /* EventID.m in Sources */,
+				198AFADC11CFCE8400719B2B /* EventReportPdu.m in Sources */,
+				198AFADD11CFCE8400719B2B /* EventReportReliablePdu.m in Sources */,
+				198AFADE11CFCE8400719B2B /* FastEntityStatePdu.m in Sources */,
+				198AFADF11CFCE8400719B2B /* FirePdu.m in Sources */,
+				198AFAE011CFCE8400719B2B /* FixedDatum.m in Sources */,
+				198AFAE111CFCE8400719B2B /* FourByteChunk.m in Sources */,
+				198AFAE211CFCE8400719B2B /* FundamentalParameterData.m in Sources */,
+				198AFAE311CFCE8400719B2B /* FundamentalParameterDataIff.m in Sources */,
+				198AFAE411CFCE8400719B2B /* GridAxisRecord.m in Sources */,
+				198AFAE511CFCE8400719B2B /* GridAxisRecordRepresentation0.m in Sources */,
+				198AFAE611CFCE8400719B2B /* GridAxisRecordRepresentation1.m in Sources */,
+				198AFAE711CFCE8400719B2B /* GridAxisRecordRepresentation2.m in Sources */,
+				198AFAE811CFCE8400719B2B /* GriddedDataPdu.m in Sources */,
+				198AFAE911CFCE8400719B2B /* IffAtcNavAidsLayer1Pdu.m in Sources */,
+				198AFAEA11CFCE8400719B2B /* IffAtcNavAidsLayer2Pdu.m in Sources */,
+				198AFAEB11CFCE8400719B2B /* IffFundamentalData.m in Sources */,
+				198AFAEC11CFCE8400719B2B /* IntercomCommunicationsParameters.m in Sources */,
+				198AFAED11CFCE8400719B2B /* IntercomControlPdu.m in Sources */,
+				198AFAEE11CFCE8400719B2B /* IntercomSignalPdu.m in Sources */,
+				198AFAEF11CFCE8400719B2B /* IsGroupOfPdu.m in Sources */,
+				198AFAF011CFCE8400719B2B /* IsPartOfPdu.m in Sources */,
+				198AFAF111CFCE8400719B2B /* LayerHeader.m in Sources */,
+				198AFAF211CFCE8400719B2B /* LinearObjectStatePdu.m in Sources */,
+				198AFAF311CFCE8400719B2B /* LinearSegmentParameter.m in Sources */,
+				198AFAF411CFCE8400719B2B /* Location.m in Sources */,
+				198AFAF511CFCE8400719B2B /* LogisticsFamilyPdu.m in Sources */,
+				198AFAF611CFCE8400719B2B /* MapAnnotation.m in Sources */,
+				198AFAF711CFCE8400719B2B /* MapViewDelegate.m in Sources */,
+				198AFAF811CFCE8400719B2B /* Marking.m in Sources */,
+				198AFAF911CFCE8400719B2B /* MinefieldDataPdu.m in Sources */,
+				198AFAFA11CFCE8400719B2B /* MinefieldFamilyPdu.m in Sources */,
+				198AFAFB11CFCE8400719B2B /* MinefieldQueryPdu.m in Sources */,
+				198AFAFC11CFCE8400719B2B /* MinefieldResponseNackPdu.m in Sources */,
+				198AFAFD11CFCE8400719B2B /* MinefieldStatePdu.m in Sources */,
+				198AFAFE11CFCE8400719B2B /* ModulationType.m in Sources */,
+				198AFAFF11CFCE8400719B2B /* NamedLocation.m in Sources */,
+				198AFB0011CFCE8400719B2B /* Network.m in Sources */,
+				198AFB0111CFCE8400719B2B /* NPSAnnotationView.m in Sources */,
+				198AFB0211CFCE8400719B2B /* ObjectType.m in Sources */,
+				198AFB0311CFCE8400719B2B /* OneByteChunk.m in Sources */,
+				198AFB0411CFCE8400719B2B /* Orientation.m in Sources */,
+				198AFB0511CFCE8400719B2B /* Pdu.m in Sources */,
+				198AFB0611CFCE8400719B2B /* PduContainer.m in Sources */,
+				198AFB0711CFCE8400719B2B /* PduDispatcher.m in Sources */,
+				198AFB0811CFCE8400719B2B /* PduFactory.m in Sources */,
+				198AFB0911CFCE8400719B2B /* PointObjectStatePdu.m in Sources */,
+				198AFB0A11CFCE8400719B2B /* PropulsionSystemData.m in Sources */,
+				198AFB0B11CFCE8400719B2B /* RadioCommunicationsFamilyPdu.m in Sources */,
+				198AFB0C11CFCE8400719B2B /* RadioEntityType.m in Sources */,
+				198AFB0D11CFCE8400719B2B /* ReceiverPdu.m in Sources */,
+				198AFB0E11CFCE8400719B2B /* RecordQueryReliablePdu.m in Sources */,
+				198AFB0F11CFCE8400719B2B /* RecordSet.m in Sources */,
+				198AFB1011CFCE8400719B2B /* Relationship.m in Sources */,
+				198AFB1111CFCE8400719B2B /* RemoveEntityPdu.m in Sources */,
+				198AFB1211CFCE8400719B2B /* RemoveEntityReliablePdu.m in Sources */,
+				198AFB1311CFCE8400719B2B /* RepairCompletePdu.m in Sources */,
+				198AFB1411CFCE8400719B2B /* RepairResponsePdu.m in Sources */,
+				198AFB1511CFCE8400719B2B /* ResupplyCancelPdu.m in Sources */,
+				198AFB1611CFCE8400719B2B /* ResupplyOfferPdu.m in Sources */,
+				198AFB1711CFCE8400719B2B /* ResupplyReceivedPdu.m in Sources */,
+				198AFB1811CFCE8400719B2B /* SeesPdu.m in Sources */,
+				198AFB1911CFCE8400719B2B /* ServiceRequestPdu.m in Sources */,
+				198AFB1A11CFCE8400719B2B /* SetDataPdu.m in Sources */,
+				198AFB1B11CFCE8400719B2B /* SetDataReliablePdu.m in Sources */,
+				198AFB1C11CFCE8400719B2B /* SetRecordReliablePdu.m in Sources */,
+				198AFB1D11CFCE8400719B2B /* ShaftRPMs.m in Sources */,
+				198AFB1E11CFCE8400719B2B /* SignalPdu.m in Sources */,
+				198AFB1F11CFCE8400719B2B /* SimulationAddress.m in Sources */,
+				198AFB2011CFCE8400719B2B /* SimulationManagementFamilyPdu.m in Sources */,
+				198AFB2111CFCE8400719B2B /* SimulationManagementWithReliabilityFamilyPdu.m in Sources */,
+				198AFB2211CFCE8400719B2B /* SixByteChunk.m in Sources */,
+				198AFB2311CFCE8400719B2B /* SphericalHarmonicAntennaPattern.m in Sources */,
+				198AFB2411CFCE8400719B2B /* StartResumePdu.m in Sources */,
+				198AFB2511CFCE8400719B2B /* StartResumeReliablePdu.m in Sources */,
+				198AFB2611CFCE8400719B2B /* StopFreezePdu.m in Sources */,
+				198AFB2711CFCE8400719B2B /* StopFreezeReliablePdu.m in Sources */,
+				198AFB2811CFCE8400719B2B /* SupplyQuantity.m in Sources */,
+				198AFB2911CFCE8400719B2B /* SyntheticEnvironmentFamilyPdu.m in Sources */,
+				198AFB2A11CFCE8400719B2B /* SystemID.m in Sources */,
+				198AFB2B11CFCE8400719B2B /* TrackJamTarget.m in Sources */,
+				198AFB2C11CFCE8400719B2B /* TransferControlRequestPdu.m in Sources */,
+				198AFB2D11CFCE8400719B2B /* TransmitterPdu.m in Sources */,
+				198AFB2E11CFCE8400719B2B /* TwoByteChunk.m in Sources */,
+				198AFB2F11CFCE8400719B2B /* UaPdu.m in Sources */,
+				198AFB3011CFCE8400719B2B /* VariableDatum.m in Sources */,
+				198AFB3111CFCE8400719B2B /* Vector3Double.m in Sources */,
+				198AFB3211CFCE8400719B2B /* Vector3Float.m in Sources */,
+				198AFB3311CFCE8400719B2B /* VectoringNozzleSystemData.m in Sources */,
+				198AFB3411CFCE8400719B2B /* WarfareFamilyPdu.m in Sources */,
+				196C1DC311D2B04B00CB6A9F /* CoordinateTransform.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DisMapIpad_Prefix.pch;
+				INFOPLIST_FILE = "DisMapIpad-Info.plist";
+				PRODUCT_NAME = DisMapIpad;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DisMapIpad_Prefix.pch;
+				INFOPLIST_FILE = "DisMapIpad-Info.plist";
+				PRODUCT_NAME = DisMapIpad;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DisMapIpad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DisMapIpad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

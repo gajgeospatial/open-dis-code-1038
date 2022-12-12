@@ -1,0 +1,12 @@
+{
+  "name": "NodeGateway",
+  "version": "0.0.1",
+  "description": "Nodejs based gateway for websockets",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "express": "4.8.3",
+    "http": "*",
+    "open-dis": "1.0.0",
+    "ws": "^0.6.3"
+  }
+}

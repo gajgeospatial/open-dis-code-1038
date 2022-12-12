@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<X3D profile='Immersive'>
+	<Scene>
+    
+    <ProtoDeclare name="Test">
+
+    <ProtoInterface>
+      <field name="blinkColor" type="SFColor" value="0.5 0.5 0.5" accessType="inputOutput" appinfo="color of object"/>
+    </ProtoInterface>
+ 
+    <ProtoBody>
+      <Box size="1 2 3" solid="true"/>
+    </ProtoBody>
+ 
+   </ProtoDeclare>
+   
+    <Shape>
+      <Text string="Hello world!" />
+    </Shape>
+    
+    <Shape>
+      <Test blinkColor="0 0 0">
+    </Shape>
+    <!--
+    <Shape>
+        <Box DEF="MyBoxNode" size="4 2 1" solid="true"/>
+    </Shape>
+    -->
+	</Scene>
+</X3D>
+    

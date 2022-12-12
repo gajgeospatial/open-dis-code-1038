@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="acknowledgeReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="acknowledgeFlag" type="xs:int"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="responseFlag" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="simulationManagementWithReliabilityFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence>
+          <xs:element name="originatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="pdu">
+    <xs:sequence>
+      <xs:element name="exerciseID" type="xs:short"/>
+      <xs:element name="length" type="xs:int"/>
+      <xs:element name="padding" type="xs:short"/>
+      <xs:element name="pduType" type="xs:short"/>
+      <xs:element name="protocolFamily" type="xs:short"/>
+      <xs:element name="protocolVersion" type="xs:short"/>
+      <xs:element name="timestamp" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entityID">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element name="entity" type="xs:int"/>
+      <xs:element name="site" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="acousticBeamData">
+    <xs:sequence>
+      <xs:element name="beamDataLength" type="xs:int"/>
+      <xs:element name="beamIDNumber" type="xs:short"/>
+      <xs:element name="fundamentalDataParameters" type="acousticBeamFundamentalParameter" minOccurs="0"/>
+      <xs:element name="pad2" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="acousticBeamFundamentalParameter">
+    <xs:sequence>
+      <xs:element name="activeEmissionParameterIndex" type="xs:int"/>
+      <xs:element name="azimuthalBeamwidth" type="xs:float"/>
+      <xs:element name="beamCenterAzimuth" type="xs:float"/>
+      <xs:element name="beamCenterDE" type="xs:float"/>
+      <xs:element name="deBeamwidth" type="xs:float"/>
+      <xs:element name="scanPattern" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="acousticEmitter">
+    <xs:sequence>
+      <xs:element name="acousticIdNumber" type="xs:short"/>
+      <xs:element name="acousticName" type="xs:int"/>
+      <xs:element name="function" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="acousticEmitterSystem">
+    <xs:sequence>
+      <xs:element name="acousticFunction" type="xs:short"/>
+      <xs:element name="acousticID" type="xs:short"/>
+      <xs:element name="acousticName" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="acousticEmitterSystemData">
+    <xs:sequence>
+      <xs:element name="acousticEmitterSystem" type="acousticEmitterSystem" minOccurs="0"/>
+      <xs:element name="beamRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="emitterLocation" type="vector3Float" minOccurs="0"/>
+      <xs:element name="emitterSystemDataLength" type="xs:short"/>
+      <xs:element name="numberOfBeams" type="xs:short"/>
+      <xs:element name="pad2" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vector3Float">
+    <xs:sequence>
+      <xs:element name="x" type="xs:float"/>
+      <xs:element name="y" type="xs:float"/>
+      <xs:element name="z" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actionRequestPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="actionID" type="xs:long"/>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="simulationManagementFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence>
+          <xs:element name="originatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="actionRequestReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="actionID" type="xs:long"/>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="actionResponsePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requestStatus" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="actionResponseReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="responseStatus" type="xs:long"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="aggregateID">
+    <xs:sequence>
+      <xs:element name="aggregateID" type="xs:int"/>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element name="site" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aggregateMarking">
+    <xs:sequence>
+      <xs:element name="characterSet" type="xs:short"/>
+      <xs:element name="characters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aggregateStatePdu">
+    <xs:complexContent>
+      <xs:extension base="entityManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="aggregateID" type="entityID" minOccurs="0"/>
+          <xs:element name="aggregateIDList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="aggregateMarking" type="aggregateMarking" minOccurs="0"/>
+          <xs:element name="aggregateState" type="xs:short"/>
+          <xs:element name="aggregateType" type="entityType" minOccurs="0"/>
+          <xs:element name="centerOfMass" type="vector3Double" minOccurs="0"/>
+          <xs:element name="dimensions" type="vector3Float" minOccurs="0"/>
+          <xs:element name="entityIDList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="forceID" type="xs:short"/>
+          <xs:element name="formation" type="xs:long"/>
+          <xs:element name="numberOfDisAggregates" type="xs:int"/>
+          <xs:element name="numberOfDisEntities" type="xs:int"/>
+          <xs:element name="numberOfSilentAggregateTypes" type="xs:int"/>
+          <xs:element name="numberOfSilentEntityTypes" type="xs:int"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="orientation" type="orientation" minOccurs="0"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="silentAggregateSystemList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="silentEntitySystemList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="variableDatumList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="velocity" type="vector3Float" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entityManagementFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entityType">
+    <xs:sequence>
+      <xs:element name="category" type="xs:short"/>
+      <xs:element name="country" type="xs:int"/>
+      <xs:element name="domain" type="xs:short"/>
+      <xs:element name="entityKind" type="xs:short"/>
+      <xs:element name="extra" type="xs:short"/>
+      <xs:element name="specific" type="xs:short"/>
+      <xs:element name="subcategory" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vector3Double">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double"/>
+      <xs:element name="y" type="xs:double"/>
+      <xs:element name="z" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="orientation">
+    <xs:sequence>
+      <xs:element name="phi" type="xs:float"/>
+      <xs:element name="psi" type="xs:float"/>
+      <xs:element name="theta" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="aggregateType">
+    <xs:sequence>
+      <xs:element name="aggregateKind" type="xs:short"/>
+      <xs:element name="category" type="xs:short"/>
+      <xs:element name="country" type="xs:int"/>
+      <xs:element name="domain" type="xs:short"/>
+      <xs:element name="extra" type="xs:short"/>
+      <xs:element name="specific" type="xs:short"/>
+      <xs:element name="subcategory" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="angularVelocityVector">
+    <xs:sequence>
+      <xs:element name="x" type="xs:float"/>
+      <xs:element name="y" type="xs:float"/>
+      <xs:element name="z" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="antennaLocation">
+    <xs:sequence>
+      <xs:element name="antennaLocation" type="vector3Double" minOccurs="0"/>
+      <xs:element name="relativeAntennaLocation" type="vector3Float" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="apaData">
+    <xs:sequence>
+      <xs:element name="parameterIndex" type="xs:int"/>
+      <xs:element name="parameterValue" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="arealObjectStatePdu">
+    <xs:complexContent>
+      <xs:extension base="syntheticEnvironmentFamilyPdu">
+        <xs:sequence>
+          <xs:element name="forceID" type="xs:short"/>
+          <xs:element name="modifications" type="xs:short"/>
+          <xs:element name="numberOfPoints" type="xs:int"/>
+          <xs:element name="objectAppearance" type="sixByteChunk" minOccurs="0"/>
+          <xs:element name="objectID" type="entityID" minOccurs="0"/>
+          <xs:element name="objectLocation" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="objectType" type="entityType" minOccurs="0"/>
+          <xs:element name="receivingID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="referencedObjectID" type="entityID" minOccurs="0"/>
+          <xs:element name="requesterID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="updateNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="syntheticEnvironmentFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sixByteChunk">
+    <xs:sequence>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="simulationAddress">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element name="site" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="articulationParameter">
+    <xs:sequence>
+      <xs:element name="changeIndicator" type="xs:short"/>
+      <xs:element name="parameterType" type="xs:int"/>
+      <xs:element name="parameterTypeDesignator" type="xs:short"/>
+      <xs:element name="parameterValue" type="xs:double"/>
+      <xs:element name="partAttachedTo" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="beamAntennaPattern">
+    <xs:sequence>
+      <xs:element name="azimuthBeamwidth" type="xs:float"/>
+      <xs:element name="beamDirection" type="orientation" minOccurs="0"/>
+      <xs:element name="ex" type="xs:float"/>
+      <xs:element name="ez" type="xs:float"/>
+      <xs:element name="padding1" type="xs:short"/>
+      <xs:element name="padding2" type="xs:byte"/>
+      <xs:element name="phase" type="xs:float"/>
+      <xs:element name="referenceSystem" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="beamData">
+    <xs:sequence>
+      <xs:element name="beamAzimuthCenter" type="xs:float"/>
+      <xs:element name="beamAzimuthSweep" type="xs:float"/>
+      <xs:element name="beamElevationCenter" type="xs:float"/>
+      <xs:element name="beamElevationSweep" type="xs:float"/>
+      <xs:element name="beamSweepSync" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="burstDescriptor">
+    <xs:sequence>
+      <xs:element name="fuse" type="xs:int"/>
+      <xs:element name="munition" type="entityType" minOccurs="0"/>
+      <xs:element name="quantity" type="xs:int"/>
+      <xs:element name="rate" type="xs:int"/>
+      <xs:element name="warhead" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="clockTime">
+    <xs:sequence>
+      <xs:element name="hour" type="xs:int"/>
+      <xs:element name="timePastHour" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="collisionElasticPdu">
+    <xs:complexContent>
+      <xs:extension base="entityInformationFamilyPdu">
+        <xs:sequence>
+          <xs:element name="coefficientOfRestitution" type="xs:float"/>
+          <xs:element name="collidingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="collisionEventID" type="eventID" minOccurs="0"/>
+          <xs:element name="collisionResultXX" type="xs:float"/>
+          <xs:element name="collisionResultXY" type="xs:float"/>
+          <xs:element name="collisionResultXZ" type="xs:float"/>
+          <xs:element name="collisionResultYY" type="xs:float"/>
+          <xs:element name="collisionResultYZ" type="xs:float"/>
+          <xs:element name="collisionResultZZ" type="xs:float"/>
+          <xs:element name="contactVelocity" type="vector3Float" minOccurs="0"/>
+          <xs:element name="issuingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="location" type="vector3Float" minOccurs="0"/>
+          <xs:element name="mass" type="xs:float"/>
+          <xs:element name="pad" type="xs:short"/>
+          <xs:element name="unitSurfaceNormal" type="vector3Float" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entityInformationFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eventID">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element name="eventNumber" type="xs:int"/>
+      <xs:element name="site" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="collisionPdu">
+    <xs:complexContent>
+      <xs:extension base="entityInformationFamilyPdu">
+        <xs:sequence>
+          <xs:element name="collidingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="collisionType" type="xs:short"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="issuingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="location" type="vector3Float" minOccurs="0"/>
+          <xs:element name="mass" type="xs:float"/>
+          <xs:element name="pad" type="xs:byte"/>
+          <xs:element name="velocity" type="vector3Float" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="commentPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="commentReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createEntityPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="requestID" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createEntityReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dataPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="padding1" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dataQueryPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="timeInterval" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dataQueryReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="timeInterval" type="xs:long"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dataReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="deadReckoningParameter">
+    <xs:sequence>
+      <xs:element name="deadReckoningAlgorithm" type="xs:short"/>
+      <xs:element name="entityAngularVelocity" type="vector3Float" minOccurs="0"/>
+      <xs:element name="entityLinearAcceleration" type="vector3Float" minOccurs="0"/>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="designatorPdu">
+    <xs:complexContent>
+      <xs:extension base="distributedEmissionsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="codeName" type="xs:int"/>
+          <xs:element name="deadReckoningAlgorithm" type="xs:byte"/>
+          <xs:element name="designatedEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="designatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="designatorCode" type="xs:int"/>
+          <xs:element name="designatorPower" type="xs:float"/>
+          <xs:element name="designatorSpotLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="designatorSpotWrtDesignated" type="vector3Float" minOccurs="0"/>
+          <xs:element name="designatorWavelength" type="xs:float"/>
+          <xs:element name="entityLinearAcceleration" type="vector3Float" minOccurs="0"/>
+          <xs:element name="padding1" type="xs:int"/>
+          <xs:element name="padding2" type="xs:byte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="distributedEmissionsFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="detonationPdu">
+    <xs:complexContent>
+      <xs:extension base="warfareFamilyPdu">
+        <xs:sequence>
+          <xs:element name="articulationParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="burstDescriptor" type="burstDescriptor" minOccurs="0"/>
+          <xs:element name="detonationResult" type="xs:short"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="locationInWorldCoordinates" type="vector3Double" minOccurs="0"/>
+          <xs:element name="munitionID" type="entityID" minOccurs="0"/>
+          <xs:element name="numberOfArticulationParameters" type="xs:short"/>
+          <xs:element name="pad" type="xs:short"/>
+          <xs:element name="velocity" type="vector3Float" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="warfareFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence>
+          <xs:element name="firingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="targetEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eightByteChunk">
+    <xs:sequence>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="electronicEmissionBeamData">
+    <xs:sequence>
+      <xs:element name="beamDataLength" type="xs:short"/>
+      <xs:element name="beamFunction" type="xs:short"/>
+      <xs:element name="beamIDNumber" type="xs:short"/>
+      <xs:element name="beamParameterIndex" type="xs:int"/>
+      <xs:element name="fundamentalParameterData" type="fundamentalParameterData" minOccurs="0"/>
+      <xs:element name="highDensityTrackJam" type="xs:short"/>
+      <xs:element name="jammingModeSequence" type="xs:long"/>
+      <xs:element name="numberOfTrackJamTargets" type="xs:short"/>
+      <xs:element name="pad4" type="xs:short"/>
+      <xs:element name="trackJamTargets" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fundamentalParameterData">
+    <xs:sequence>
+      <xs:element name="beamAzimuthCenter" type="xs:float"/>
+      <xs:element name="beamAzimuthSweep" type="xs:float"/>
+      <xs:element name="beamElevationCenter" type="xs:float"/>
+      <xs:element name="beamElevationSweep" type="xs:float"/>
+      <xs:element name="beamSweepSync" type="xs:float"/>
+      <xs:element name="effectiveRadiatedPower" type="xs:float"/>
+      <xs:element name="frequency" type="xs:float"/>
+      <xs:element name="frequencyRange" type="xs:float"/>
+      <xs:element name="pulseRepetitionFrequency" type="xs:float"/>
+      <xs:element name="pulseWidth" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="electronicEmissionSystemData">
+    <xs:sequence>
+      <xs:element name="beamDataRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="emissionsPadding2" type="xs:int"/>
+      <xs:element name="emitterSystem" type="emitterSystem" minOccurs="0"/>
+      <xs:element name="location" type="vector3Float" minOccurs="0"/>
+      <xs:element name="numberOfBeams" type="xs:short"/>
+      <xs:element name="systemDataLength" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emitterSystem">
+    <xs:sequence>
+      <xs:element name="emitterIdNumber" type="xs:short"/>
+      <xs:element name="emitterName" type="xs:int"/>
+      <xs:element name="function" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="electronicEmissionsPdu">
+    <xs:complexContent>
+      <xs:extension base="distributedEmissionsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="emittingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="numberOfSystems" type="xs:short"/>
+          <xs:element name="stateUpdateIndicator" type="xs:short"/>
+          <xs:element name="systems" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entityStatePdu">
+    <xs:complexContent>
+      <xs:extension base="entityInformationFamilyPdu">
+        <xs:sequence>
+          <xs:element name="alternativeEntityType" type="entityType" minOccurs="0"/>
+          <xs:element name="articulationParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="capabilities" type="xs:int"/>
+          <xs:element name="deadReckoningParameters" type="deadReckoningParameter" minOccurs="0"/>
+          <xs:element name="entityAppearance" type="xs:int"/>
+          <xs:element name="entityID" type="entityID" minOccurs="0"/>
+          <xs:element name="entityLinearVelocity" type="vector3Float" minOccurs="0"/>
+          <xs:element name="entityLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="entityOrientation" type="orientation" minOccurs="0"/>
+          <xs:element name="entityType" type="entityType" minOccurs="0"/>
+          <xs:element name="forceId" type="xs:short"/>
+          <xs:element name="marking" type="marking" minOccurs="0"/>
+          <xs:element name="numberOfArticulationParameters" type="xs:byte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="marking">
+    <xs:sequence>
+      <xs:element name="characterSet" type="xs:short"/>
+      <xs:element name="characters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entityStateUpdatePdu">
+    <xs:complexContent>
+      <xs:extension base="entityInformationFamilyPdu">
+        <xs:sequence>
+          <xs:element name="articulationParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="entityAppearance" type="xs:int"/>
+          <xs:element name="entityID" type="entityID" minOccurs="0"/>
+          <xs:element name="entityLinearVelocity" type="vector3Float" minOccurs="0"/>
+          <xs:element name="entityLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="entityOrientation" type="orientation" minOccurs="0"/>
+          <xs:element name="numberOfArticulationParameters" type="xs:byte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="environment">
+    <xs:sequence>
+      <xs:element name="environmentType" type="xs:long"/>
+      <xs:element name="geometry" type="xs:short"/>
+      <xs:element name="index" type="xs:short"/>
+      <xs:element name="length" type="xs:short"/>
+      <xs:element name="padding1" type="xs:short"/>
+      <xs:element name="padding2" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="environmentalProcessPdu">
+    <xs:complexContent>
+      <xs:extension base="syntheticEnvironmentFamilyPdu">
+        <xs:sequence>
+          <xs:element name="environementalProcessID" type="entityID" minOccurs="0"/>
+          <xs:element name="environmentRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="environmentStatus" type="xs:short"/>
+          <xs:element name="environmentType" type="entityType" minOccurs="0"/>
+          <xs:element name="modelType" type="xs:short"/>
+          <xs:element name="numberOfEnvironmentRecords" type="xs:short"/>
+          <xs:element name="sequenceNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eventReportPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="eventType" type="xs:long"/>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="padding1" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="eventReportReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="eventType" type="xs:int"/>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:long"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="fastEntityStatePdu">
+    <xs:complexContent>
+      <xs:extension base="entityInformationFamilyPdu">
+        <xs:sequence>
+          <xs:element name="altCategory" type="xs:short"/>
+          <xs:element name="altCountry" type="xs:int"/>
+          <xs:element name="altDomain" type="xs:short"/>
+          <xs:element name="altEntityKind" type="xs:short"/>
+          <xs:element name="altExtra" type="xs:short"/>
+          <xs:element name="altSpecific" type="xs:short"/>
+          <xs:element name="altSubcategory" type="xs:short"/>
+          <xs:element name="application" type="xs:int"/>
+          <xs:element name="articulationParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="capabilities" type="xs:int"/>
+          <xs:element name="category" type="xs:short"/>
+          <xs:element name="country" type="xs:int"/>
+          <xs:element name="deadReckoningAlgorithm" type="xs:short"/>
+          <xs:element name="domain" type="xs:short"/>
+          <xs:element name="entity" type="xs:int"/>
+          <xs:element name="entityAppearance" type="xs:int"/>
+          <xs:element name="entityKind" type="xs:short"/>
+          <xs:element name="extra" type="xs:short"/>
+          <xs:element name="forceId" type="xs:short"/>
+          <xs:element name="marking" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="numberOfArticulationParameters" type="xs:byte"/>
+          <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+          <xs:element name="phi" type="xs:float"/>
+          <xs:element name="psi" type="xs:float"/>
+          <xs:element name="site" type="xs:int"/>
+          <xs:element name="specific" type="xs:short"/>
+          <xs:element name="subcategory" type="xs:short"/>
+          <xs:element name="theta" type="xs:float"/>
+          <xs:element name="XAcceleration" type="xs:float"/>
+          <xs:element name="XAngularVelocity" type="xs:float"/>
+          <xs:element name="XLocation" type="xs:float"/>
+          <xs:element name="XVelocity" type="xs:float"/>
+          <xs:element name="YAcceleration" type="xs:float"/>
+          <xs:element name="YAngularVelocity" type="xs:float"/>
+          <xs:element name="YLocation" type="xs:float"/>
+          <xs:element name="YVelocity" type="xs:float"/>
+          <xs:element name="ZAcceleration" type="xs:float"/>
+          <xs:element name="ZAngularVelocity" type="xs:float"/>
+          <xs:element name="ZLocation" type="xs:float"/>
+          <xs:element name="ZVelocity" type="xs:float"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="firePdu">
+    <xs:complexContent>
+      <xs:extension base="warfareFamilyPdu">
+        <xs:sequence>
+          <xs:element name="burstDescriptor" type="burstDescriptor" minOccurs="0"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="fireMissionIndex" type="xs:int"/>
+          <xs:element name="locationInWorldCoordinates" type="vector3Double" minOccurs="0"/>
+          <xs:element name="munitionID" type="entityID" minOccurs="0"/>
+          <xs:element name="range" type="xs:float"/>
+          <xs:element name="velocity" type="vector3Float" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="fixedDatum">
+    <xs:sequence>
+      <xs:element name="fixedDatumID" type="xs:long"/>
+      <xs:element name="fixedDatumValue" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fourByteChunk">
+    <xs:sequence>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fundamentalParameterDataIff">
+    <xs:sequence>
+      <xs:element name="applicableModes" type="xs:short"/>
+      <xs:element name="burstLength" type="xs:long"/>
+      <xs:element name="erp" type="xs:float"/>
+      <xs:element name="frequency" type="xs:float"/>
+      <xs:element name="pad2" type="xs:int"/>
+      <xs:element name="pad3" type="xs:short"/>
+      <xs:element name="pgrf" type="xs:float"/>
+      <xs:element name="pulseWidth" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gridAxisRecord">
+    <xs:sequence>
+      <xs:element name="dataRepresentation" type="xs:int"/>
+      <xs:element name="sampleType" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gridAxisRecordRepresentation0">
+    <xs:complexContent>
+      <xs:extension base="gridAxisRecord">
+        <xs:sequence>
+          <xs:element name="dataValues" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfBytes" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="gridAxisRecordRepresentation1">
+    <xs:complexContent>
+      <xs:extension base="gridAxisRecord">
+        <xs:sequence>
+          <xs:element name="dataValues" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="fieldOffset" type="xs:float"/>
+          <xs:element name="fieldScale" type="xs:float"/>
+          <xs:element name="numberOfValues" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="gridAxisRecordRepresentation2">
+    <xs:complexContent>
+      <xs:extension base="gridAxisRecord">
+        <xs:sequence>
+          <xs:element name="dataValues" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfValues" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="griddedDataPdu">
+    <xs:complexContent>
+      <xs:extension base="syntheticEnvironmentFamilyPdu">
+        <xs:sequence>
+          <xs:element name="constantGrid" type="xs:short"/>
+          <xs:element name="coordinateSystem" type="xs:int"/>
+          <xs:element name="environmentType" type="entityType" minOccurs="0"/>
+          <xs:element name="environmentalSimulationApplicationID" type="entityID" minOccurs="0"/>
+          <xs:element name="fieldNumber" type="xs:int"/>
+          <xs:element name="gridDataList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfGridAxes" type="xs:short"/>
+          <xs:element name="orientation" type="orientation" minOccurs="0"/>
+          <xs:element name="padding1" type="xs:int"/>
+          <xs:element name="padding2" type="xs:short"/>
+          <xs:element name="pduNumber" type="xs:int"/>
+          <xs:element name="pduTotal" type="xs:int"/>
+          <xs:element name="sampleTime" type="xs:long"/>
+          <xs:element name="totalValues" type="xs:long"/>
+          <xs:element name="vectorDimension" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="iffAtcNavAidsLayer1Pdu">
+    <xs:complexContent>
+      <xs:extension base="distributedEmissionsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="emittingEntityId" type="entityID" minOccurs="0"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="fundamentalParameters" type="iffFundamentalData" minOccurs="0"/>
+          <xs:element name="location" type="vector3Float" minOccurs="0"/>
+          <xs:element name="pad2" type="xs:int"/>
+          <xs:element name="systemID" type="systemID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="iffFundamentalData">
+    <xs:sequence>
+      <xs:element name="alternateParameter4" type="xs:short"/>
+      <xs:element name="informationLayers" type="xs:short"/>
+      <xs:element name="modifier" type="xs:short"/>
+      <xs:element name="parameter1" type="xs:int"/>
+      <xs:element name="parameter2" type="xs:int"/>
+      <xs:element name="parameter3" type="xs:int"/>
+      <xs:element name="parameter4" type="xs:int"/>
+      <xs:element name="parameter5" type="xs:int"/>
+      <xs:element name="parameter6" type="xs:int"/>
+      <xs:element name="systemStatus" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="systemID">
+    <xs:sequence>
+      <xs:element name="changeOptions" type="xs:short"/>
+      <xs:element name="systemMode" type="xs:short"/>
+      <xs:element name="systemName" type="xs:int"/>
+      <xs:element name="systemType" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iffAtcNavAidsLayer2Pdu">
+    <xs:complexContent>
+      <xs:extension base="iffAtcNavAidsLayer1Pdu">
+        <xs:sequence>
+          <xs:element name="beamData" type="beamData" minOccurs="0"/>
+          <xs:element name="fundamentalIffParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="layerHeader" type="layerHeader" minOccurs="0"/>
+          <xs:element name="secondaryOperationalData" type="beamData" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="layerHeader">
+    <xs:sequence>
+      <xs:element name="layerNumber" type="xs:short"/>
+      <xs:element name="layerSpecificInformaiton" type="xs:short"/>
+      <xs:element name="length" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="intercomCommunicationsParameters">
+    <xs:sequence>
+      <xs:element name="recordLength" type="xs:int"/>
+      <xs:element name="recordSpecificField" type="xs:long"/>
+      <xs:element name="recordType" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="intercomControlPdu">
+    <xs:complexContent>
+      <xs:extension base="radioCommunicationsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="command" type="xs:short"/>
+          <xs:element name="communicationsChannelType" type="xs:short"/>
+          <xs:element name="controlType" type="xs:short"/>
+          <xs:element name="intercomParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="intercomParametersLength" type="xs:long"/>
+          <xs:element name="masterCommunicationsDeviceID" type="xs:int"/>
+          <xs:element name="masterEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="sourceCommunicationsDeviceID" type="xs:short"/>
+          <xs:element name="sourceEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="sourceLineID" type="xs:short"/>
+          <xs:element name="transmitLineState" type="xs:short"/>
+          <xs:element name="transmitPriority" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="radioCommunicationsFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence>
+          <xs:element name="entityId" type="entityID" minOccurs="0"/>
+          <xs:element name="radioId" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="intercomSignalPdu">
+    <xs:complexContent>
+      <xs:extension base="radioCommunicationsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="communicationsDeviceID" type="xs:int"/>
+          <xs:element name="data" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="dataLength" type="xs:int"/>
+          <xs:element name="encodingScheme" type="xs:int"/>
+          <xs:element name="entityID" type="entityID" minOccurs="0"/>
+          <xs:element name="sampleRate" type="xs:long"/>
+          <xs:element name="samples" type="xs:int"/>
+          <xs:element name="tdlType" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="isGroupOfPdu">
+    <xs:complexContent>
+      <xs:extension base="entityManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="groupEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="groupedEntityCategory" type="xs:short"/>
+          <xs:element name="groupedEntityDescriptions" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="latitude" type="xs:double"/>
+          <xs:element name="longitude" type="xs:double"/>
+          <xs:element name="numberOfGroupedEntities" type="xs:short"/>
+          <xs:element name="pad2" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="isPartOfPdu">
+    <xs:complexContent>
+      <xs:extension base="entityManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="namedLocationID" type="namedLocation" minOccurs="0"/>
+          <xs:element name="orginatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="partEntityType" type="entityType" minOccurs="0"/>
+          <xs:element name="partLocation" type="vector3Float" minOccurs="0"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="relationship" type="relationship" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="namedLocation">
+    <xs:sequence>
+      <xs:element name="stationName" type="xs:int"/>
+      <xs:element name="stationNumber" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="relationship">
+    <xs:sequence>
+      <xs:element name="nature" type="xs:int"/>
+      <xs:element name="position" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="linearObjectStatePdu">
+    <xs:complexContent>
+      <xs:extension base="syntheticEnvironmentFamilyPdu">
+        <xs:sequence>
+          <xs:element name="forceID" type="xs:short"/>
+          <xs:element name="linearSegmentParameters" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfSegments" type="xs:short"/>
+          <xs:element name="objectID" type="entityID" minOccurs="0"/>
+          <xs:element name="objectType" type="objectType" minOccurs="0"/>
+          <xs:element name="receivingID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="referencedObjectID" type="entityID" minOccurs="0"/>
+          <xs:element name="requesterID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="updateNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="objectType">
+    <xs:sequence>
+      <xs:element name="category" type="xs:short"/>
+      <xs:element name="country" type="xs:int"/>
+      <xs:element name="domain" type="xs:short"/>
+      <xs:element name="entityKind" type="xs:short"/>
+      <xs:element name="subcategory" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="linearSegmentParameter">
+    <xs:sequence>
+      <xs:element name="location" type="vector3Double" minOccurs="0"/>
+      <xs:element name="orientation" type="orientation" minOccurs="0"/>
+      <xs:element name="pad1" type="xs:long"/>
+      <xs:element name="segmentAppearance" type="sixByteChunk" minOccurs="0"/>
+      <xs:element name="segmentDepth" type="xs:int"/>
+      <xs:element name="segmentHeight" type="xs:int"/>
+      <xs:element name="segmentLength" type="xs:int"/>
+      <xs:element name="segmentNumber" type="xs:short"/>
+      <xs:element name="segmentWidth" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="logisticsFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="minefieldDataPdu">
+    <xs:complexContent>
+      <xs:extension base="minefieldFamilyPdu">
+        <xs:sequence>
+          <xs:element name="dataFilter" type="xs:long"/>
+          <xs:element name="mineLocation" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="mineType" type="entityType" minOccurs="0"/>
+          <xs:element name="minefieldID" type="entityID" minOccurs="0"/>
+          <xs:element name="minefieldSequenceNumbeer" type="xs:int"/>
+          <xs:element name="numberOfMinesInThisPdu" type="xs:short"/>
+          <xs:element name="numberOfPdus" type="xs:short"/>
+          <xs:element name="numberOfSensorTypes" type="xs:short"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="pad3" type="xs:short"/>
+          <xs:element name="pduSequenceNumber" type="xs:short"/>
+          <xs:element name="requestID" type="xs:short"/>
+          <xs:element name="requestingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="sensorTypes" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="minefieldFamilyPdu">
+    <xs:complexContent>
+      <xs:extension base="pdu">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="minefieldQueryPdu">
+    <xs:complexContent>
+      <xs:extension base="minefieldFamilyPdu">
+        <xs:sequence>
+          <xs:element name="dataFilter" type="xs:long"/>
+          <xs:element name="minefieldID" type="entityID" minOccurs="0"/>
+          <xs:element name="numberOfPerimeterPoints" type="xs:short"/>
+          <xs:element name="numberOfSensorTypes" type="xs:short"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:short"/>
+          <xs:element name="requestedMineType" type="entityType" minOccurs="0"/>
+          <xs:element name="requestedPerimeterPoints" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="requestingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="sensorTypes" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="minefieldResponseNackPdu">
+    <xs:complexContent>
+      <xs:extension base="minefieldFamilyPdu">
+        <xs:sequence>
+          <xs:element name="minefieldID" type="entityID" minOccurs="0"/>
+          <xs:element name="missingPduSequenceNumbers" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfMissingPdus" type="xs:short"/>
+          <xs:element name="requestID" type="xs:short"/>
+          <xs:element name="requestingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="minefieldStatePdu">
+    <xs:complexContent>
+      <xs:extension base="minefieldFamilyPdu">
+        <xs:sequence>
+          <xs:element name="appearance" type="xs:int"/>
+          <xs:element name="forceID" type="xs:short"/>
+          <xs:element name="mineType" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="minefieldID" type="entityID" minOccurs="0"/>
+          <xs:element name="minefieldLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="minefieldOrientation" type="orientation" minOccurs="0"/>
+          <xs:element name="minefieldSequence" type="xs:int"/>
+          <xs:element name="minefieldType" type="entityType" minOccurs="0"/>
+          <xs:element name="numberOfMineTypes" type="xs:int"/>
+          <xs:element name="numberOfPerimeterPoints" type="xs:short"/>
+          <xs:element name="perimeterPoints" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="protocolMode" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="modulationType">
+    <xs:sequence>
+      <xs:element name="detail" type="xs:int"/>
+      <xs:element name="major" type="xs:int"/>
+      <xs:element name="spreadSpectrum" type="xs:int"/>
+      <xs:element name="system" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="oneByteChunk">
+    <xs:sequence>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pduCollection">
+    <xs:sequence>
+      <xs:element name="pdus" type="pdu" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="point">
+    <xs:sequence>
+      <xs:element name="x" type="xs:float"/>
+      <xs:element name="y" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pointObjectStatePdu">
+    <xs:complexContent>
+      <xs:extension base="syntheticEnvironmentFamilyPdu">
+        <xs:sequence>
+          <xs:element name="forceID" type="xs:short"/>
+          <xs:element name="modifications" type="xs:short"/>
+          <xs:element name="objectAppearance" type="xs:double"/>
+          <xs:element name="objectID" type="entityID" minOccurs="0"/>
+          <xs:element name="objectLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="objectOrientation" type="orientation" minOccurs="0"/>
+          <xs:element name="objectType" type="objectType" minOccurs="0"/>
+          <xs:element name="pad2" type="xs:long"/>
+          <xs:element name="receivingID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="referencedObjectID" type="entityID" minOccurs="0"/>
+          <xs:element name="requesterID" type="simulationAddress" minOccurs="0"/>
+          <xs:element name="updateNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="propulsionSystemData">
+    <xs:sequence>
+      <xs:element name="engineRpm" type="xs:float"/>
+      <xs:element name="powerSetting" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="radioEntityType">
+    <xs:sequence>
+      <xs:element name="category" type="xs:short"/>
+      <xs:element name="country" type="xs:int"/>
+      <xs:element name="domain" type="xs:short"/>
+      <xs:element name="entityKind" type="xs:short"/>
+      <xs:element name="nomenclature" type="xs:int"/>
+      <xs:element name="nomenclatureVersion" type="xs:short"/>
+      <xs:element name="subcategory" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receiverPdu">
+    <xs:complexContent>
+      <xs:extension base="radioCommunicationsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="padding1" type="xs:int"/>
+          <xs:element name="receivedPoser" type="xs:float"/>
+          <xs:element name="receiverState" type="xs:int"/>
+          <xs:element name="transmitterEntityId" type="entityID" minOccurs="0"/>
+          <xs:element name="transmitterRadioId" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="recordQueryReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="eventType" type="xs:int"/>
+          <xs:element name="numberOfRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="recordIDs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="time" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="recordSet">
+    <xs:sequence>
+      <xs:element name="pad4" type="xs:short"/>
+      <xs:element name="recordCount" type="xs:int"/>
+      <xs:element name="recordID" type="xs:long"/>
+      <xs:element name="recordLength" type="xs:int"/>
+      <xs:element name="recordSetSerialNumber" type="xs:long"/>
+      <xs:element name="recordValues" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="removeEntityPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="requestID" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="removeEntityReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="repairCompletePdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="repair" type="xs:int"/>
+          <xs:element name="repairingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="repairResponsePdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="padding1" type="xs:short"/>
+          <xs:element name="padding2" type="xs:byte"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="repairResult" type="xs:short"/>
+          <xs:element name="repairingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="resupplyCancelPdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="supplyingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="resupplyOfferPdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="numberOfSupplyTypes" type="xs:short"/>
+          <xs:element name="padding1" type="xs:short"/>
+          <xs:element name="padding2" type="xs:byte"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="supplies" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="supplyingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="resupplyReceivedPdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="numberOfSupplyTypes" type="xs:short"/>
+          <xs:element name="padding1" type="xs:short"/>
+          <xs:element name="padding2" type="xs:byte"/>
+          <xs:element name="receivingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="supplies" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="supplyingEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="seesPdu">
+    <xs:complexContent>
+      <xs:extension base="distributedEmissionsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="acousticSignatureRepresentationIndex" type="xs:int"/>
+          <xs:element name="infraredSignatureRepresentationIndex" type="xs:int"/>
+          <xs:element name="numberOfPropulsionSystems" type="xs:int"/>
+          <xs:element name="numberOfVectoringNozzleSystems" type="xs:int"/>
+          <xs:element name="orginatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="propulsionSystemData" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="radarCrossSectionSignatureRepresentationIndex" type="xs:int"/>
+          <xs:element name="vectoringSystemData" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceRequestPdu">
+    <xs:complexContent>
+      <xs:extension base="logisticsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="numberOfSupplyTypes" type="xs:short"/>
+          <xs:element name="requestingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="serviceRequestPadding" type="xs:short"/>
+          <xs:element name="serviceTypeRequested" type="xs:short"/>
+          <xs:element name="servicingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="supplies" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="setDataPdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="padding1" type="xs:long"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="setDataReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="fixedDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="numberOfFixedDatumRecords" type="xs:long"/>
+          <xs:element name="numberOfVariableDatumRecords" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="variableDatumRecords" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="setRecordReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="numberOfRecordSets" type="xs:long"/>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="recordSets" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="shaftRPMs">
+    <xs:sequence>
+      <xs:element name="currentShaftRPMs" type="xs:short"/>
+      <xs:element name="orderedShaftRPMs" type="xs:short"/>
+      <xs:element name="shaftRPMRateOfChange" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="signalPdu">
+    <xs:complexContent>
+      <xs:extension base="radioCommunicationsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="dataLength" type="xs:short"/>
+          <xs:element name="encodingScheme" type="xs:int"/>
+          <xs:element name="sampleRate" type="xs:int"/>
+          <xs:element name="samples" type="xs:short"/>
+          <xs:element name="tdlType" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sphericalHarmonicAntennaPattern">
+    <xs:sequence>
+      <xs:element name="order" type="xs:byte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="startResumePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="realWorldTime" type="clockTime" minOccurs="0"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="simulationTime" type="clockTime" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="startResumeReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="pad1" type="xs:int"/>
+          <xs:element name="pad2" type="xs:short"/>
+          <xs:element name="realWorldTime" type="clockTime" minOccurs="0"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="simulationTime" type="clockTime" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stopFreezePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="frozenBehavior" type="xs:short"/>
+          <xs:element name="padding1" type="xs:short"/>
+          <xs:element name="realWorldTime" type="clockTime" minOccurs="0"/>
+          <xs:element name="reason" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="stopFreezeReliablePdu">
+    <xs:complexContent>
+      <xs:extension base="simulationManagementWithReliabilityFamilyPdu">
+        <xs:sequence>
+          <xs:element name="frozenBehavior" type="xs:short"/>
+          <xs:element name="pad1" type="xs:short"/>
+          <xs:element name="realWorldTime" type="clockTime" minOccurs="0"/>
+          <xs:element name="reason" type="xs:short"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliablityService" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="supplyQuantity">
+    <xs:sequence>
+      <xs:element name="quantity" type="xs:short"/>
+      <xs:element name="supplyType" type="entityID" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackJamTarget">
+    <xs:sequence>
+      <xs:element name="beamID" type="xs:short"/>
+      <xs:element name="emitterID" type="xs:short"/>
+      <xs:element name="trackJam" type="entityID" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferControlRequestPdu">
+    <xs:complexContent>
+      <xs:extension base="entityManagementFamilyPdu">
+        <xs:sequence>
+          <xs:element name="numberOfRecordSets" type="xs:short"/>
+          <xs:element name="orginatingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="recevingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="recordSets" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="requestID" type="xs:long"/>
+          <xs:element name="requiredReliabilityService" type="xs:short"/>
+          <xs:element name="tranferType" type="xs:short"/>
+          <xs:element name="transferEntityID" type="entityID" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transmitterPdu">
+    <xs:complexContent>
+      <xs:extension base="radioCommunicationsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="antennaLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="antennaPatternCount" type="xs:int"/>
+          <xs:element name="antennaPatternList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="antennaPatternType" type="xs:int"/>
+          <xs:element name="cryptoKeyId" type="xs:int"/>
+          <xs:element name="cryptoSystem" type="xs:int"/>
+          <xs:element name="frequency" type="xs:double"/>
+          <xs:element name="inputSource" type="xs:short"/>
+          <xs:element name="modulationParameterCount" type="xs:short"/>
+          <xs:element name="modulationParametersList" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="modulationType" type="modulationType" minOccurs="0"/>
+          <xs:element name="padding1" type="xs:int"/>
+          <xs:element name="padding2" type="xs:int"/>
+          <xs:element name="padding3" type="xs:short"/>
+          <xs:element name="power" type="xs:float"/>
+          <xs:element name="radioEntityType" type="radioEntityType" minOccurs="0"/>
+          <xs:element name="relativeAntennaLocation" type="vector3Double" minOccurs="0"/>
+          <xs:element name="transmitFrequencyBandwidth" type="xs:float"/>
+          <xs:element name="transmitState" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="twoByteChunk">
+    <xs:sequence>
+      <xs:element name="otherParameters" type="xs:base64Binary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="uaPdu">
+    <xs:complexContent>
+      <xs:extension base="distributedEmissionsFamilyPdu">
+        <xs:sequence>
+          <xs:element name="apaData" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="emitterSystems" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="emittingEntityID" type="entityID" minOccurs="0"/>
+          <xs:element name="eventID" type="eventID" minOccurs="0"/>
+          <xs:element name="numberOfAPAs" type="xs:short"/>
+          <xs:element name="numberOfShafts" type="xs:short"/>
+          <xs:element name="numberOfUAEmitterSystems" type="xs:short"/>
+          <xs:element name="pad" type="xs:byte"/>
+          <xs:element name="passiveParameterIndex" type="xs:int"/>
+          <xs:element name="propulsionPlantConfiguration" type="xs:short"/>
+          <xs:element name="shaftRPMs" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="stateChangeIndicator" type="xs:byte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="variableDatum">
+    <xs:sequence>
+      <xs:element name="variableDatumID" type="xs:long"/>
+      <xs:element name="variableDatumLength" type="xs:long"/>
+      <xs:element name="variableDatums" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vectoringNozzleSystemData">
+    <xs:sequence>
+      <xs:element name="horizontalDeflectionAngle" type="xs:float"/>
+      <xs:element name="verticalDeflectionAngle" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

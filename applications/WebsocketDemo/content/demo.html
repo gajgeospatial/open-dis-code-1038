@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            
+            var websocket;
+            console.log("started web page");
+            var randomNumber = Math.floor(Math.random() * 10000);
+            
+            // Compatiability checks--not all web browsers support Websockets
+            if(window.WebSocket)
+                websocket = new WebSocket("ws://localhost:8282");//, "nve");
+            else if(Window.MozWebSocket)
+                websocket = new MozWebSocket("ws://localhost:8282");//, "nve");
+            else
+                alert("This web browser does not support web sockets");
+            
+            setInterval(heartbeat, 5000);
+            
+            // Attach functions to the the web socket for various events
+            websocket.onopen = function(evt){console.log("websocket onopen");};
+            websocket.onclose = function(evt){console.log("websocket close")};
+            websocket.onerror = function(evt){console.log("websocket error")};
+            
+            try
+            {
+                websocket.send("{id:1 x:0 y:0 z:0}");
+            }
+            catch(e)
+            {
+                console.log("Error trying to send, before initialized");
+            }
+            
+            
+            
+            // Handle the messages sent from the server to us here
+            websocket.onmessage = function(evt)
+            {
+                console.log("Got message from web server", evt.data);
+            };
+            
+            function heartbeat()
+            {
+                try
+                {
+                    websocket.send("{id:" + randomNumber + ", x:0 y:0 z:0}");
+                    console.log("Sent message to server");
+                }
+                catch(e)
+                {
+                    console.log(e);
+                }
+            }
+            
+            
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

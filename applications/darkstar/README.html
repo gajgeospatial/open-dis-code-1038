@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>Darkstar-DIS</title>
+</head>
+<body>
+<h1 style="text-align: center;">Darkstar with Distributed Interactive
+Simulation</h1>
+<br>
+<span style="font-weight: bold;">1. What's Darkstar? </span><br
+ style="font-weight: bold;">
+<br>
+Darkstar is Sun's attempt at a massively multiplayer online game
+toolkit. The web site is at <a href="http://projectdarkstar.com.">http://projectdarkstar.com.</a>
+The underlying idea is to provide a toolkit that allows developers to
+infinite or near-infinite size. They haven't yet demonstrated that yet,
+so I'm agnostic on the claim. On the other hand, the odds are good that
+it's OK for perhaps a few hundred entities, and that covers a lot of
+applications.<br>
+<br>
+Darkstar uses a database on the server side to hold persistent
+objects.&nbsp; Multiple hosts on the server side can share access to
+the database, allowing scale-out in CPU cycles; if you want more AI or
+collision detection on the server side, you simply add more
+hosts.&nbsp; The use of a persisent database adds some interesting
+capabilities, such as transactional capability on object modifications
+and the ability to compelety power down the server, restart it, and
+have all your objects come back.<br>
+<br>
+Darkstar is server-centric; generally speaking, it likes all
+communications to go through the server, and likes decisions to be made
+on the server side. This is in line with most contemporary game
+platforms. If nothing else, the potential for cheating in commerical
+games makes any and all input from the client side suspect, much less
+game ajudication decisions like whether someone was shot. The DIS
+protocol, in contrast, tends to make peer-to-peer decisions about
+things like shooting results. We haven't yet quite figured out how to
+resolve the conceptual mismatch. But, hey, that's what research is all
+about.<br>
+<br>
+<span style="font-weight: bold;">2. What's DIS?</span><br>
+<br>
+Distributed Interactive Simulation (DIS) is a widely used Department of
+Defense modeling and simulation protocol. It is a wire format; the
+exact layout of data on the wire is specified for a few dozen Protocol
+Data Units (PDUs).&nbsp; We've written an open source implementation of
+the DIS protocol for Java, C++, and C#. You can get some pointers to
+further DIS documentation at the open-dis site, <a
+ href="http://open-dis.sourceforge.net">http://open-dis.sourceforge.net</a>.<br>
+<br>
+<span style="font-weight: bold;">3. What software is included?</span><br>
+<br>
+This release has two parts, a server side and a client side. Both have
+netbeans project folders. <br>
+<br>
+In the server directory, it's generally best to start it up from the
+command line. There is a build.xml ant file with two tasks defined,
+"ant clean-datastore" and "ant start". The first completely wipes out
+the server side persistent database. The second starts the darkstar
+server. The server program starts up darkstar, adds some DIS-style
+entities to the persistent object store, and adds several tasks for
+things like heartbeat and tick. It also opens a DIS-specific
+communications channel that accepts DIS packets from a darkstar client
+and adds an entity to the persistent object store if entities described
+in the PDU are not found. The entities hosted on the server side send
+out periodic heartbeat ESPDU packets. <br>
+<br>
+The database used on the server side is Berkeley. There are native
+libraries included for many development platforms; I've been developing
+on OSX. JDK 1.6 is required.<br>
+<br>
+The client project opens a connection to the darkstar server and
+establishes a connection that is used for DIS packets. <br>
+<br>
+On both the client and the server the open-dis package (in java) is
+used to encode and decode DIS.<br>
+<br>
+<span style="font-weight: bold;">4. Future work</span><br>
+<br>
+Lots. We're kicking around the idea of using darkstar as a permanent
+virtual world. The scalablity of Darkstar is unproven, but it's
+probably good enough to go to a few hundred DIS entities, and that's
+not all that bad for a lot of applications. If it can scale to
+thousands or tens of thousands, we'd be estatatic. <br>
+<br>
+Don McGregor<br>
+Naval Postgraduate School<br>
+MOVES Institute<br>
+mcgredo@nps.edu<br>
+<br>
+</body>
+</html>

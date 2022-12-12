@@ -1,0 +1,5 @@
+This has been modified from Specific Air standard so that the names match the names xplane uses
+SPC_Description,DMN_ORD,CAT_ORD,CTY_ORD,SCT_ORD,SPC_ORD
+S-61,2,23,224,1,9
+F-4 Phantom,2,1,225,4,2
+B747-400,2,57,225,1,1

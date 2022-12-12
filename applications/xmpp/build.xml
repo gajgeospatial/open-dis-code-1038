@@ -1,0 +1,89 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+
+<project name="xmpp-dis" default="dist" basedir=".">
+    <property name="src"   location="src"/>
+    <property name="build" location="build"/>
+    <property name="lib"   location="lib"/>
+    <property name="dist"  location="dist"/>
+    <property name="docs"  location="dist/docs"/>
+    
+    <property name="jarfile" location="${dist}/${ant.project.name}.jar"/>
+    <property name="compile.debug" value="true"/>
+
+    <fileset id="lib.jars" dir="${lib}">
+        <include name="**/*.jar"/>
+    </fileset>
+
+    <path id="lib.path">
+        <fileset refid="lib.jars"/>
+    </path>
+    
+    <target name="init" description="create initial directories">
+      <mkdir dir="dist"/>
+      <mkdir dir="dist/docs"/>
+      <mkdir dir="build"/>
+    </target>
+    
+    <!-- Display the classpath -->
+<target name="printclasspath">
+<property name="myclasspath" refid="lib.path"/>
+<echo message="classpath= ${myclasspath}"/>
+</target>
+
+    <!-- compile the java code -->
+    <target name="compile" depends="init" description="Compile java code">
+        <javac srcdir="${src}" destdir="${build}"
+               source="1.5" target="1.5"
+               includeAntRuntime="no"
+               debug="${compile.debug}">
+               <!--compilerarg value="-Xlint"/-->
+          <classpath>
+            <fileset dir="${lib}">
+              <include name="**/*.jar"/>
+            </fileset>
+         </classpath>
+        </javac>
+       
+        <copy todir="${build}">
+          <fileset dir="${src}" includes="**/*.properties"/>
+        </copy> 
+    </target>
+   
+    <target name="run" depends="jar" description="run XMPP sender program">
+      <java classname="edu.nps.moves.dis.xmpp.XmppSender">
+        <classpath>
+          <fileset dir="lib">
+            <include name="**/*.jar"/>
+          </fileset>
+          <fileset dir="dist">
+            <include name="**/*.jar"/>
+          </fileset>
+        </classpath>
+    </java>
+    </target>
+
+    <target name="jar" depends="compile" description="Build jar">
+        <mkdir dir="${dist}"/>
+        <jar jarfile="dist/xmpp-dis.jar" basedir="build"/>
+    </target>
+    
+    <target name="javadoc" depends="compile" description="generate javadocs for the DIS code">
+      <javadoc destdir="${docs}" packagenames="edu.nps.moves.*" sourcepath="${src}">
+          <classpath>
+              <fileset dir="lib">
+                  <include name="**/*.jar"/>
+              </fileset>
+          </classpath>
+        </javadoc>
+    </target>
+    
+    <target name="dist" depends="init, compile, javadoc, jar" description="do everything">
+    </target>
+
+    <target name="clean" description="Remove build and dist directories">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+        <delete dir="docs"/>
+    </target>
+</project>
+

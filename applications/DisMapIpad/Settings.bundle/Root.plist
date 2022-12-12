@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MULTICAST_GROUP</key>
+	<string>239.1.2.3</string>
+	<key>UDP_PORT</key>
+	<string>62040</string>
+	<key>DIS_COORDINATES</key>
+	<false/>
+	<key>LAT_LON_COORDINATES</key>
+	<false/>
+	<key>DEVICE_SENDS_DIS</key>
+	<true/>
+</dict>
+</plist>

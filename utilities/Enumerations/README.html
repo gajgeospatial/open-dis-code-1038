@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title>README.html</title>
+</head>
+<body>
+<big><big><span style="font-weight: bold;">DIS Enumerations</span><br
+ style="font-weight: bold;">
+</big></big><br>
+This package contains programming language enumerations for the
+Distributed Interactive Simulation (DIS) IEEE 1278 standard.<br>
+<br>
+The DIS protocol has many arbitrary values for various fields, such as
+the PDU type: 1 for Entity State PDU, 2 for Fire PDU, etc. It is not
+very workable to use these values in programming language code, where
+they have little meaning to the programmer compared to something like
+PduType.ENTITY_STATE_PDU. <br>
+<br>
+This package uses the SISO EBV XML document, which contains entity
+values and descriptions in an XML document, to generate programming
+language constructs that correspond to enumerated values.<br>
+<br>
+For example, this fragment of XML comes from the EBV document:<br>
+<br>
+<span style="font-family: Courier New;">&nbsp;&lt;enum length="8"
+id="2" cname="pduheader.pdutype" name="PDU Type" source="3.2"&gt;</span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp; &lt;enumrow
+id="0" description="Other"/&gt;</span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp; &lt;enumrow
+id="1" description="Entity State"/&gt;</span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp; &lt;enumrow
+id="2" description="Fire"/&gt;</span><br>
+<br>
+A Java program parses the document and generates Java enumeration
+classes, which look like this:<br>
+<br>
+<span style="font-family: Courier New;">public enum PduType </span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">{</span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp; OTHER(0,
+"Other"),</span><br style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp;
+ENTITY_STATE(1, "Entity State"),</span><br
+ style="font-family: Courier New;">
+<span style="font-family: Courier New;">&nbsp;&nbsp;&nbsp; FIRE(2,
+"Fire"),<br>
+<br>
+<span style="font-family: Times;">This class can be used in Java
+programming construct, like so:</span><br style="font-family: Times;">
+<br>
+PduType type;<br>
+...<br>
+switch(type)<br>
+{<br>
+&nbsp; case ENTITY_STATE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+doSomething();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp; case FIRE:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+doSomethingElse();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+...<br>
+<br>
+<span style="font-family: Times;">You can also enumerate over all the
+instances of an enumeration:</span><br style="font-family: Times;">
+<br>
+&nbsp;for(PduType anEnum:PduType.values())<br>
+&nbsp;{<br>
+&nbsp;}<br>
+<br>
+<span style="font-family: Times New Roman;">Which will loop over all
+the enumerations defined in the class, in this case all the PDU types.</span><br
+ style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">In Java enumerations are
+first class objects that can have methods and instance variables. All
+the enumerations have a value and a description; above, the the
+PduType.ENTITY_STATE enumeration has an integer value of 1 and
+description of "Entity State".</span><br
+ style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">Often the programmer will
+need to translate a number obtained off the network wire into an
+enumeration object. Each enumeration class has a method that allows
+this:</span><br>
+<br>
+static public PduType getEnumerationForValue(int aVal) throws
+EnumNotFoundException<br>
+<br>
+<span style="font-family: Times New Roman;">PduType.getEnumerationForValue(1)
+will return the ENTITY_STATE enumeration object. If the number passed
+in does not have a corresponding enumeration an exception will be
+thrown.</span><br style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">As an alternative, a higher
+performance option for real-time programs (but more brittle) approach
+is to use a direct array lookup. Each enumeration class has an array
+filled out with enumeration objects.</span><br
+ style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">PduType.lookup[1] will
+return the enumeration that has a value of 1. However, if there is no
+enumeration with that value, or if the array access is out of range,
+the program will crash.</span><br style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">Programs also often need
+only the string description from the value, but wrapping a long block
+of code in an exception handling block is unweildy. For this, the method</span><br>
+<br>
+static public String getDescriptionForValue(int aVal)<br>
+<br>
+<span style="font-family: Times New Roman;">is provided. </span><br>
+<br>
+PduType.getDescriptionForValue(1);<br>
+<br>
+<span style="font-family: Times New Roman;">will return the string "</span></span><span
+ style="font-family: Courier New;"><span
+ style="font-family: Times New Roman;">Entity State" from the
+enumeration with the value of 1, PduType.ENTITY_STATE. If there is no
+defined enumeration for that value, the string "Invalid Enumeration:
+(value)" will be returned, obviating the need to wrap the code in an
+exception block.</span><br style="font-family: Times New Roman;">
+<br style="font-family: Times New Roman;">
+<span style="font-family: Times New Roman;">The Enumeration class
+CountryType has an additional field for the internet domain code for
+that country, filled out on a best-guess basis.<br>
+<br>
+<big><big><span style="font-weight: bold;">Future Work</span></big></big><br>
+<br>
+It would be great if someoone did a C++ implementation. <br>
+<br>
+<big><big><span style="font-weight: bold;">License</span></big></big><br>
+<br>
+The code is licensed under the BSD open source license. The license is
+available at http://www.movesinstitute.org/licenses<br>
+<br>
+Copyright (c) 1995-2009 held by the author(s).&nbsp; All rights
+reserved.<br>
+<br>
+Redistribution and use in source and binary forms, with or without<br>
+modification, are permitted provided that the following conditions<br>
+are met:<br>
+<br>
+&nbsp;&nbsp;&nbsp; * Redistributions of source code must retain the
+above copyright<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; notice, this list of conditions and the
+following disclaimer.<br>
+&nbsp;&nbsp;&nbsp; * Redistributions in binary form must reproduce the
+above copyright<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; notice, this list of conditions and the
+following disclaimer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in the documentation and/or other
+materials provided with the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; distribution.<br>
+&nbsp;&nbsp;&nbsp; * Neither the names of the Naval Postgraduate School
+(NPS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Modeling Virtual Environments and
+Simulation (MOVES) Institute<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (http://www.nps.edu and
+http://www.MovesInstitute.org)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nor the names of its contributors may be
+used to endorse or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; promote products derived from this
+software without specific<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prior written permission.<br>
+<br>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS<br>
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT<br>
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS<br>
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE<br>
+COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,<br>
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,<br>
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;<br>
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER<br>
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT<br>
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN<br>
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE<br>
+POSSIBILITY OF SUCH DAMAGE.<br>
+</span></span><span style="font-family: Courier New;"><br>
+</span>
+</body>
+</html>

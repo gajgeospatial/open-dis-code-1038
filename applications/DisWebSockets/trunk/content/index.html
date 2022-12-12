@@ -1,0 +1,286 @@
+<html>
+<head>  
+    <title>onload test</title>  
+    
+    
+  </head>  
+  
+<div id="message"></div>
+        
+<body>
+<script type="text/javascript" src="js/three/Three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
+<script type="text/javascript" src="js/nve/nvemodel.js"></script>
+<script type="text/javascript" src="js/nve/nveview.js"> </script>
+<script type="text/javascript" src="js/nve/nvecontroller.js"> </script>
+<script type="text/javascript" src="js/nve/nvecomm.js"></script>
+<script>
+  
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+// standard global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
+
+// Websocket to communicate with server
+var webSocket = new nve.WebSocket("ws://localhost:8081/nve");
+
+// custom global variables
+var localEntity;
+var localEntityID;
+
+// The heartbeatReaper function is called every X ms to remove
+// foreign entities that we have not heard from in some specified
+// amount of time.
+var reaper = setInterval(nve.heartbeatReaper, 5000);
+var heartbeat = setInterval(nve.heartbeat, 5000);
+
+//var loader = new THREE.ColladaLoader();
+
+// initialization
+init();
+
+
+// animation loop / game loop
+animate();
+
+///////////////
+// FUNCTIONS //
+///////////////
+			
+function init() 
+{
+    // Scene
+    scene = new THREE.Scene();
+
+    // Camera
+    // 
+    // set the view size in pixels (custom or according to window size)
+    // var SCREEN_WIDTH = 400, SCREEN_HEIGHT = 300;
+    var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
+    // camera attributes
+    var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+    // set up camera
+    camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+    // add the camera to the scene
+    scene.add(camera);
+    // the camera defaults to position (0,0,0)
+    // 	so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
+    camera.position.set(10,-200,200);
+    camera.lookAt(scene.position);	
+
+    // Renderer
+
+    // create and start the renderer; choose antialias setting.
+    renderer = new THREE.WebGLRenderer( {antialias:true} );
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    // create a div element to contain the renderer
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
+    // alternatively: if you insert the div via HTML, access it using
+    //   container = document.getElementById( 'container' );
+
+    // attach renderer to the container div
+    container.appendChild( renderer.domElement );
+
+    // Events
+
+    // automatically resize renderer
+    THREEx.WindowResize(renderer, camera);
+    // toggle full-screen on given key press
+    THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+
+    //////////////
+    // CONTROLS //
+    //////////////
+
+    // move mouse and: left   click (or hold 'A') to rotate, 
+    //                 middle click (or hold 'S') to zoom, 
+    //                 right  click (or hold 'D') to pan
+    controls = new THREE.TrackballControls( camera );
+
+    ///////////
+    // STATS //
+    ///////////
+
+    // displays current and past frames per second attained by scene
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.bottom = '0px';
+    stats.domElement.style.zIndex = 100;
+    container.appendChild( stats.domElement );
+
+    ///////////
+    // LIGHT //
+    ///////////
+
+    // create a light
+    var light = new THREE.PointLight(0xffffff);
+    light.position.set(0,-250,40);
+    scene.add(light);
+    var light2 = new THREE.PointLight(0xffffff);
+    light2.position.set(250,250,40);
+    scene.add(light2);
+    var light3 = new THREE.PointLight(0xffffff);
+    light3.position.set(-250,250,40);
+    scene.add(light3);
+    var ambientLight = new THREE.AmbientLight(0x111111);
+    scene.add(ambientLight);
+
+    //////////////
+    // GEOMETRY //
+    //////////////
+
+
+    // create a new MVC congolmeration. This should probably be moved
+    // to a function in nve.Entity. This creates a locally controlled
+    // entity; it is shown on the local screen and is controlled by the
+    // local keyboard.
+    
+    // Pick an entityID, a unique ID that this not shared with any other
+    // entity in the world. We're actually taking a small chance here, 
+    // because we pick a random number and we may get collisions
+    var localEid = Math.floor(Math.random() * 65000);
+    localEntityID = '{"site": 1, "application": 1, "entity":' + localEid + "}";
+    
+    // The entity type is from the SISO EBV document. This creates a default entity
+    // type that is nonsensical. In a better implementation we'd use this info to
+    // load the correct graphical model
+    var et = '{"domain":0,"country":0,"category":0,"subcategory":0,"spec":0,"extra":0}';
+
+    // Normalize the EID, so all string representations of the EID are exactly
+    // the same. We rely on JSON to do this for us.
+    var key = eval("(" + localEntityID + ")");
+    keyString = JSON.stringify(key);
+    
+    // Create a new Model-View-Controller grouping. 
+    
+    // Model
+    var newEntity = new nve.Entity(keyString, et, true);
+    
+    // View
+    var graphicInfo = nve.entityTypeToGraphicDatabase["default"];
+    var newView = new nve.NveView(graphicInfo);
+    
+    // Controller
+    var newController = new nve.Controller(newEntity, newView);
+    newEntity.controller = newController;
+    nve.controllerDatabase[keyString] = newEntity.controller;
+    localEntity = newEntity;
+   
+    // create a set of coordinate axes to help orient user
+    // default size is 100 pixels in each direction; change size by setting scale
+    var axes = new THREE.AxisHelper();
+    axes.scale.set( 5, 5, 5 );
+    scene.add( axes );
+
+    ///////////
+    // FLOOR //
+    ///////////
+
+    // note: 4x4 checkboard pattern scaled so that each square is 25 by 25 pixels.
+    var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
+    floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
+    floorTexture.repeat.set( 10, 10 );
+    var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture } );
+    var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 1, 1);
+    var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    floor.position.y = -0.5;
+    floor.doubleSided = true;
+    scene.add(floor);
+
+    /////////
+    // SKY //
+    /////////
+
+    // recommend either a skybox or fog effect (can't use both at the same time) 
+    // without one of these, the scene's background color is determined by webpage background
+
+    // make sure the camera's "far" value is large enough so that it will render the skyBox!
+    var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+    var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff } );
+    var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+    skyBox.flipSided = true; // render faces from inside of the cube, instead of from outside (default).
+    scene.add(skyBox);
+
+    // fog must be added to scene before first render
+    scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+}
+
+function animate() 
+{
+    requestAnimationFrame( animate );
+	render();		
+	update();
+}
+
+/** 
+ * Send out our local entity's information to the network 
+ */
+function updateLocalEntityPosition(localEntityEspdu)
+{
+    date = new Date();
+    localEntityEspdu.timestamp = Math.floor(date.getTime()/10000);
+    webSocket.send(JSON.stringify(localEntityEspdu));   
+}
+
+/** Get user input information 
+ */
+function update()
+{
+	// delta = change in time since last call (in seconds)
+	var delta = clock.getDelta(); 
+        var x = localEntity.espdu.entityLocation.x;
+        var y = localEntity.espdu.entityLocation.y;
+        var z = localEntity.espdu.entityLocation.z;
+
+	// functionality provided by THREEx.KeyboardState.js
+	if ( keyboard.pressed("1") )
+		document.getElementById('message').innerHTML = ' Have a nice day! - 1';	
+	if ( keyboard.pressed("2") )
+		document.getElementById('message').innerHTML = ' Have a nice day! - 2 ';
+        if ( keyboard.pressed("w") )
+            {
+		localEntity.espdu.entityLocation.x = x + 1;
+                localEntity.controller.modelChanged();
+                updateLocalEntityPosition(localEntity.espdu);
+            }
+	if ( keyboard.pressed("s") )
+            {
+		localEntity.espdu.entityLocation.y = y + 1;
+                localEntity.controller.modelChanged();
+                updateLocalEntityPosition(localEntity.espdu);
+            }
+        if ( keyboard.pressed("a") )
+            {
+		localEntity.espdu.entityLocation.x = x - 1;
+                localEntity.controller.modelChanged();
+                updateLocalEntityPosition(localEntity.espdu);
+            }
+	if ( keyboard.pressed("d") )
+            {
+		localEntity.espdu.entityLocation.y = y - 1;
+                localEntity.controller.modelChanged();
+                updateLocalEntityPosition(localEntity.espdu);
+            }
+		
+	controls.update();
+	stats.update();
+}
+
+function render() 
+{	
+	renderer.render( scene, camera );
+}
+
+</script> 
+ 
+
+</body>
+</html>
+

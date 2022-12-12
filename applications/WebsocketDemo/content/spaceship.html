@@ -1,0 +1,129 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- DIS library -->
+        <script src="javascript/dis.js"></script>
+        
+        <!-- three.js 3d javascript library -->
+        <script src="javascript/three.js"></script>
+        
+        <!-- Loader for collada models -->
+        <script src="javascript/loaders/ColladaLoader.js"></script>
+        
+        <script>
+            
+            var uniqueId = Math.floor(Math.random() * 10000);
+            var allEntities = {};
+            var entity;
+            
+            window.onload = function()
+            {
+            var websocket;
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( 800, 640 );
+            document.body.appendChild( renderer.domElement );
+
+            var scene = new THREE.Scene();
+            
+            
+            // Compatiability checks--not all web browsers support Websockets
+            if(window.WebSocket)
+                websocket = new WebSocket("ws://localhost:8282");//, "nve");
+            else if(Window.MozWebSocket)
+                websocket = new MozWebSocket("ws://localhost:8282");//, "nve");
+            else
+                alert("This web browser does not support web sockets");
+            
+            // Set the format we want to use to receive binary messages
+            websocket.binaryType = 'arraybuffer';
+            
+            // Attach functions to the the web socket for various events
+            websocket.onopen = function(evt){console.log("websocket onopen");};
+            websocket.onclose = function(evt){console.log("websocket close");};
+            websocket.onerror = function(evt){console.log("websocket error");};
+            
+            // Handle the messages sent from the server to us here
+            websocket.onmessage = function(evt)
+            {
+                // Convert the JSON into a javascript object
+               var disMessage = eval('(' + evt.data + ')' );
+               console.log(disMessage);
+               entity.position.x = disMessage.x;
+               renderer.render( scene, camera );
+            }
+            
+            // Scene setup
+            var camera = new THREE.PerspectiveCamera(35,         // Field of view
+                                                     800 / 640,  // Aspect ratio
+                                                     .1,         // Near
+                                                     10000);     // Far
+                                                     
+            camera.position.set( -15, 10, 15 );
+            camera.lookAt( scene.position );
+            
+            /** Configure the collada loader. This operates asynchronously; we
+             * create the ColladaLoader object, and tell it to load a model,
+             * with a callback function specified. Javascript creates the loader
+             * and tells it to load the model from the URL. When it actually 
+             * gets around to loading the model, the callback function--
+             * "loaderCallback" in this case--is fired. 
+             */
+            loader = new THREE.ColladaLoader();
+            console.log("Created loader");
+            
+            // The function called when the model is finally loaded. We add it to
+            // the scene and keep track of it.
+            loaderCallback= function(result)
+            {
+                console.log("Loaded model");
+                scene.add(result.scene);
+                entity = result.scene;
+            }
+            
+            // Load the model at the URL, and call the function loaderCallback when
+            // loading is complete.
+            loader.load("http://localhost:8282/models/SpaceShip/SpaceShip.dae", loaderCallback);
+            
+            //scene.add( mesh );
+            
+            var light = new THREE.PointLight( 0xFFFF00 );
+            light.position.set( 10, 0, 10 );
+            scene.add( light );
+            renderer.render( scene, camera );
+            
+            // Every 5 sec, call the heartbeat function.
+            setInterval(heartbeat, 5000);
+                
+            console.log("started web page");
+            
+            
+            
+            /**
+             * Optional, not used now. We can set this up to periodically send
+             * out messages to the server
+             */
+            function heartbeat()
+            {
+                console.log("heartbeat");
+                var espdu = {"id":uniqueId, "x":1, "y":1, "z":1};
+                
+                websocket.send(JSON.stringify(espdu));
+            }
+            
+            }  
+            
+        </script>
+    </head>
+    
+    
+    <body>
+
+    </body>
+</html>

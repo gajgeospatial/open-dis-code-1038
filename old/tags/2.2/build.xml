@@ -1,0 +1,112 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+
+<project name="open-dis" default="dist" basedir=".">
+    <property name="src" location="java"/>
+    <property name="bin" location="bin"/>
+    <property name="lib" location="lib"/>
+    <property name="dist" location="dist"/>
+    
+    <property name="jarfile" location="${dist}/${ant.project.name}.jar"/>
+    <property name="compile.debug" value="true"/>
+
+    <fileset id="lib.jars" dir="${lib}">
+        <include name="**/*.jar"/>
+    </fileset>
+
+    <path id="lib.path">
+        <fileset refid="lib.jars"/>
+    </path>
+    
+    <target name="init" description="create initial directories">
+      <mkdir dir="cpp/obj"/>
+      <mkdir dir="docs"/>
+      <mkdir dir="dist"/>
+      <mkdir dir="bin"/>
+    </target>
+
+    <!-- compile the java code -->
+    <target name="compile" depends="init" description="Compile java code">
+        <javac srcdir="${src}" destdir="${bin}"
+               source="1.5" target="1.5"
+               includeAntRuntime="no"
+               classpathref="lib.path" debug="${compile.debug}">
+        </javac>
+    </target>
+    
+    <target name="runSender" depends="jar" description="run DIS example program">
+      <java classname="edu.nps.moves.examples.EspduSender">
+        <classpath>
+          <fileset dir="dist">
+            <include name="**/*.jar"/>
+          </fileset>
+          <pathelement location="{$bin}"/>
+        </classpath>
+    </java>
+    </target>
+
+    <target name="runXmlWriter" depends="jar" description="run example program that marshals DIS PDUs to XML and reads data back">
+      <java classname="edu.nps.moves.disutil.XmlReadWrite">
+        <classpath>
+          <fileset dir="dist">
+            <include name="**/*.jar"/>
+          </fileset>
+          <fileset dir="lib">
+            <include name="**/*.jar"/>
+          </fileset>
+          <pathelement location="{$bin}"/>
+        </classpath>
+    </java>
+    </target>
+
+    
+     <target name="runReceiver" depends="jar" description="run DIS receiver program">
+      <java classname="edu.nps.moves.examples.EspduReceiver">
+        <classpath>
+          <fileset dir="dist">
+            <include name="**/*.jar"/>
+          </fileset>
+          <pathelement location="{$bin}"/>
+        </classpath>
+    </java>
+    </target>
+
+    <target name="jar" depends="compile" description="Build jar">
+        <mkdir dir="${dist}"/>
+        <jar jarfile="dist/open-dis.jar" basedir="bin"/>
+    </target>
+    
+    <target name="javadoc" depends="compile" description="generate javadocs for the DIS code">
+      <javadoc destdir="docs" packagenames="edu.nps.moves.dis" sourcepath="java"/>
+    </target>
+    
+    <!-- Creates a new Ant tag that handles compling C++ code. Uses ant-contrib, a
+         sourceforge project. The jar file for ant-contrib is in the lib directory
+         as cpptasks.jar. This does not work.-->
+    <taskdef name="cc" classname="net.sf.antcontrib.cpptasks.CCTask">
+      <classpath>
+        <pathelement location="lib/cpptasks.jar"/>
+      </classpath>
+    </taskdef>
+    
+    <!-- Compile the generated cpp code and place the object files in the cpp/obj directory. This does not work on my distro (OSX) -->
+    <target name="compileCpp">
+    
+      <cc name="gcc" outfile="dis.exe" objdir="cpp/obj" outtype="executable" >
+        <compiler name="gcc"/>
+        <fileset dir="CppUtils"/>
+        <fileset dir="cpp"/>
+                
+        <includepath location="cpp"/>
+        <includepath location="CppUtils"/>
+    </cc>
+    </target>
+    
+    <target name="dist" depends="init, compile, compile, javadoc, jar" description="do everything">
+    </target>
+
+    <target name="clean" description="Remove build and dist directories">
+        <delete dir="${bin}"/>
+        <delete dir="${dist}"/>
+        <delete dir="docs"/>
+    </target>
+</project>

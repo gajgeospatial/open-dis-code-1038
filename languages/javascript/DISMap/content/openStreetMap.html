@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="ol3/ol.css" type="text/css">
+    <style>
+      #map {
+        height: 1024px;
+        width: 1024px;
+      }
+      #popup {
+          padding-bottom:45px;
+      }
+    </style>
+    <title>OpenLayers 3 DIS Example</title>
+    <script src="javascript/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="ol3/ol.js" type="text/javascript"></script>
+    <script src="javascript/dis.js"></script>
+  </head>
+  <body>
+    <h1>DIS Enabled Map, OpenStreetMap</h1>
+    
+    <div class="container-fluid">
+
+      <div class="row-fluid">
+        <div class="span12">
+          <div id="map" class="map">
+            <div id="popup"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+        
+        
+    <script type="text/javascript">
+      
+      var espdu = new dis.EntityStatePdu();
+      var websocket;
+      var WEBSOCKET_URL = "ws://localhost:8282";
+      var browserPosition; 
+      var initializationComplete = false;
+      
+      // The popup info boxes don't quite work yet--there's some crap
+      // with bootstrap.js that also needs to be included, and I haven't
+      // sorted through all the requirements yet. See the ol 3 website icon
+      // examples, though the documentation is crap.
+      var element = document.getElementById('popup');
+      var popup = new ol.Overlay({
+          element:element,
+          positioning: 'bottom-center',
+          stopEvent:false
+      });
+  
+      /** Coordinate conversion, from DIS to lat/lon/alt */
+      var conversion = new dis.CoordinateConversion();
+      
+      // Vector source contains the various map icon elements
+      var vectorLayerSource = new ol.source.Vector({});
+      
+      initializeLocalEntity();
+      
+      // One map icon
+      var localEntity = new ol.Feature(
+         {
+          //geometry: new ol.geom.Point(ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857')),
+          geometry: new ol.geom.Point([-121.875, 36.595]),
+          name:"Naval Postgraduate School",
+          eid:JSON.stringify(espdu.entityID),
+          espdu:espdu,
+          lastHeardFrom:new Date()
+         });
+       localEntity.setId(JSON.stringify(espdu.entityID));
+
+      // Add the icon to the vector source, which provides the vectorlayer with its icons
+      vectorLayerSource.addFeature(localEntity);
+      
+      // How to style map icons
+      var mapIconStyle = new ol.style.Style({
+          image: new ol.style.Icon(
+                  {
+                    anchor:[0.5, 0.5], // icon center
+                    opacity: 0.95,
+                    src:'images/dotIcon.png',
+                    scale:0.1
+                  })
+              });
+              
+      var vectorLayer = new ol.layer.Vector({
+          source:vectorLayerSource,
+          style:mapIconStyle});
+      console.log("created vectorLayer");
+                         
+
+      var map = new ol.Map({
+        target: 'map', // The DOM element in the HTML we're targeting
+        layers: [      // Layers, various pieces of information
+           new ol.layer.Tile({
+               title: "Global Imagery",
+               source: new ol.source.TileWMS({
+               url: 'http://maps.opengeo.org/geowebcache/service/wms',
+               params: {LAYERS: 'openstreetmap', VERSION: '1.1.1'}
+               })
+             }),
+             vectorLayer // icons
+        ],
+        view: new ol.View({
+          projection: 'EPSG:4326',
+          center: [-122, 36.6],
+          zoom: 7,
+          maxResolution: 0.703125
+        })
+      });
+      
+      map.addOverlay(popup);
+      
+      /*
+      map.on('click', function(evt)
+      {
+          var feature = map.forEachFeatureAtPixel(evt.pixel,
+          function(feature, layer){
+              return feature;
+          });
+          
+          
+          if(feature)
+          {
+              console.log("got feature");
+              var geometry = feature.getGeometry();
+              var coord = geometry.getCoordinates();
+              popup.setPosition(coord);
+              
+              
+              $(element).popup({
+                  'placement':'top',
+                  'html': true,
+                  'content':'wocka'
+                  //'content':feature.get('eid')
+              });
+              element.popover('show');
+          }
+          else
+          {
+              $(element).popover('destroy');
+          }
+      });
+        
+      */
+      initialize();
+      
+      function initializeLocalEntity()
+      {
+          // Initialize the PDU that represents this web browser page. The
+        // geolocation API is used to place this entity whereever the web
+        // browser happens to be located. For example, if the computer running
+        // this web browser page is in Orlando, the icon will drop in Orlando.
+
+        // Entity ID
+        espdu.entityID.site = 42;
+        espdu.entityID.application = 17;
+        espdu.entityID.entity = Math.round(Math.random() * 16000); // Unique (ish) ID
+
+        // What type of entity this is--in this case a dismounted infantry guy
+        espdu.entityType.entityKind = 3;   // life form
+        espdu.entityType.domain = 1;       // land
+        espdu.entityType.country = 225;    // US
+        espdu.entityType.cat = 1;          // dismounted infantry
+        espdu.entityType.subcategory = 17; // Mini-14! A-Team roolz!
+        espdu.entityType.specific = 1;     // number of people
+
+        espdu.timestamp = 1;               // Timestamp is bogus--should fix this. Just needs to be incremented at a miminim
+        
+      }
+      /**
+       * Initialization code. Set up the websocket, create an ESPDU to send,
+       * start pruning and heartbeat, etc.
+       * 
+       * @returns {undefined}
+       */
+      function initialize()
+      {
+          console.log("initializing");
+
+        // set up websocket
+        // Compatiability checks--not all web browsers support Websockets.
+            // note that the host portion of the URL (localhost here) MUST
+            // be changed to a DNS name or IP to reach it from off-host. The
+            // existing localhost is just there for development purposes.
+            if(window.WebSocket)
+                websocket = new WebSocket(WEBSOCKET_URL);
+            else if(Window.MozWebSocket)
+                websocket = new MozWebSocket(WEBSOCKET_URL);
+            else
+                alert("This web browser does not support web sockets");
+            
+            // Set the format we want to use to receive binary messages
+            websocket.binaryType = 'arraybuffer';
+            
+            // Attach functions to the the web socket for various events
+            websocket.onopen = function(evt){console.log("Opened websocket");};//console.log("websocket onopen");};
+            websocket.onclose = function(evt){console.log("websocket close", evt.data);};
+            websocket.onerror = function(evt){console.log("websocket error", evt.data);};
+            
+            /** Handle the messages sent from the server to us here. We receive binary
+             * DIS from the server over the web socket.
+             * @param {event} evt The receive event object. Contains the binary data to decode
+             */
+            websocket.onmessage = function(evt)
+            {  
+                // Don't process any messages until the page is fully initialized
+                if(initializationComplete === false)
+                    return;
+                
+                // Factory object for creating new PDUs from binary data
+               var pduFactory = new dis.PduFactory();
+               
+               // InputStream is modeled on a Java input stream. Pass it binary data,
+               // and we will read through it, while input stream maintains a current
+               // place marker
+               //console.log(evt.data);
+               //var inputStream = new dis.InputStream(evt.data);
+               
+               var disMessage = pduFactory.createPdu(evt.data);
+               
+               // You can trap the various types of PDU here, and
+               // probably call a specific function to handle each
+               // type of message. For now we greturn on everything but
+               // espdus. Those fall through to the code below.
+               switch(disMessage.pduType)
+               {
+                   case 1: //console.log("ESPDU");
+                       break;
+                       
+                   // We don't actually do any logic with these yet--we simply 
+                   // return, which has the effect of discarding everything but
+                   // entity state PDUs.
+                   case 2: //console.log("FirePdu");
+                       return;
+                   default:
+                       return;  
+               }
+
+               // Retrieve the entity ID from the DIS message, convert it to a JSON
+               // string, and then use that as a sleazy key into a "hash table" consisting
+               // of object attributes.
+               
+               var entityID = disMessage.entityID;
+               var eidString = JSON.stringify(entityID);
+               var latLonAlt = conversion.convertDisToLatLongInDegrees(disMessage.entityLocation);
+
+               // Look for it in our list of features
+               var entity = vectorLayerSource.getFeatureById(eidString);
+               
+               if(entity === null)
+               {
+                   
+                   console.log("New entity discovered", eidString, " location:", latLonAlt);
+                   
+                    // Convert from DIS global coordinates to latitude/longtitude
+                   
+                    entity = new ol.Feature(
+                    {
+                        //geometry: new ol.geom.Point(ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857')),
+                        geometry: new ol.geom.Point([latLonAlt.longitude, latLonAlt.latitude]),
+                        name:eidString,
+                        eid:eidString,
+                        espdu:espdu,
+                        lastHeardFrom:new Date()
+                       });
+                   entity.setId(eidString);
+                   vectorLayerSource.addFeature(entity);
+                 }
+                 
+                 var g = entity.getGeometry();
+                 lonLat = g.getCoordinates();
+                 lonLat[0] = latLonAlt.longitude;   
+                 lonLat[1] = latLonAlt.latitude;
+                 g.setCoordinates(lonLat);
+    
+            } ;
+            
+            // Use the geolocation API to find the current location
+            // Firefox keeps asking every time this is called, and you can't
+            // get in fast enough to choose the "always allow" function. 
+            window.setInterval(getLocation, 5000);
+            // Send our state periodically 
+            window.setInterval(heartbeat, 1000);
+            // periodically prune entities that we haven't heard from lately
+            window.setInterval(prune, 60000);
+            
+            
+            
+            initializationComplete = true;
+      };
+      
+      /** Standard browser geolocation code to get the location of the device
+        * that this web page is running on
+        */
+       function getLocation()
+       {
+           //console.log("geolocation called");
+           if (navigator.geolocation)
+           {
+             // Works via callback to function passed in
+             navigator.geolocation.getCurrentPosition(showPosition);
+             //console.log("callback registered");
+           }
+           else
+           {
+               console.log("Geolocation not supported by this browser");
+           }
+       }
+
+       /** Callback function. Gets the location as the browser knows it. */
+       function showPosition(position, error)
+       {
+           browserPosition = position;
+       }
+       
+       /**
+        * Called periodicaly to send out an update of our position. Uses the
+        * browser geolocation routines to set the PDUs location, which is useful
+        * for mobile devices. If we have no local position fix, do not send out
+        * an update.
+        */
+       function heartbeat()
+       {   
+           // No local browser position update? Punt.
+           if(browserPosition === undefined)
+               return;
+           
+           var localFeature = vectorLayerSource.getFeatureById(JSON.stringify(espdu.entityID));
+           var g = localFeature.getGeometry();
+           lonLat = g.getCoordinates();
+           lonLat[0] = browserPosition.coords.longitude;   
+           lonLat[1] = browserPosition.coords.latitude;
+           g.setCoordinates(lonLat);
+          
+           //console.log("heartbeat type pdu:", espdu.pduType);
+           var conversion = new dis.CoordinateConversion();
+           latLonAlt = {};
+           latLonAlt.lat = browserPosition.coords.latitude;
+           latLonAlt.lon = browserPosition.coords.longitude;
+           latLonAlt.alt = 0.0;
+
+           // bump timestamp
+           espdu.timestamp++;
+
+           // Set location
+           var disCoordinates = conversion.getXYZfromLatLonAltDegrees(latLonAlt);
+           espdu.entityLocation.x = disCoordinates.x;
+           espdu.entityLocation.y = disCoordinates.y;
+           espdu.entityLocation.z = disCoordinates.z;
+
+           // Marshal out the PDU that represents the local browser's position
+           // to the IEEE DIS binary format. We allocate a big buffer to write,
+           // and if the actual data occupies less than that, trim to fit.
+           var dataBuffer = new ArrayBuffer(1000); // typically 144 bytes, make it bigger for safety
+           var outputStream = new dis.OutputStream(dataBuffer);
+           espdu.encodeToBinaryDIS(outputStream);
+
+           // Trim to fit
+           var trimmedData = dataBuffer.slice(0, outputStream.currentPosition);
+           websocket.send(trimmedData);
+       }
+       
+       function prune()
+       {
+           
+       }
+      
+    </script>
+  </body>
+</html>
+
